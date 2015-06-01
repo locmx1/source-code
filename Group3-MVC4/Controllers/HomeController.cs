@@ -16,5 +16,19 @@ namespace Group3_MVC4.Controllers
             return View();
         }
 
+        public ActionResult ViewWatches()
+        {
+            return View();
+        }
+
+        public ActionResult ViewWatchDetail()
+        {
+            return View();
+        }
+
+        public ActionResult CreateSellingRequest()
+        {
+            return View();
+        }
     }
 }
