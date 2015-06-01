@@ -15,6 +15,25 @@ namespace Group3_MVC4.Controllers
         {
             return View();
         }
-
+        public ActionResult CreateNewStaff()
+        {
+            return View();
+        }
+        public ActionResult ModifyStaff()
+        {
+            return View();
+        }
+        public ActionResult ModifyStore()
+        {
+            return View();
+        }
+        public ActionResult CreateNewStore()
+        {
+            return View();
+        }
+        public ActionResult Mail()
+        {
+            return View();
+        }
     }
 }
