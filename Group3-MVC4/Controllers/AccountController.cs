@@ -6,34 +6,32 @@ using System.Web.Mvc;
 
 namespace Group3_MVC4.Controllers
 {
-    public class HomeController : Controller
+    public class AccountController : Controller
     {
         //
-        // GET: /Home/
+        // GET: /Account/
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ViewWatches()
+        [HttpGet]
+        public ActionResult LogIn()
         {
             return View();
         }
 
-        public ActionResult ViewWatchDetail()
+        [HttpPost]
+        public ActionResult LogIn(string account, string password)
         {
             return View();
         }
 
-        public ActionResult CreateSellingRequest()
+        public ActionResult MyTransaction()
         {
             return View();
         }
 
-        public ActionResult Tag(string id, string title)
-        {
-            return View();
-        }
     }
 }

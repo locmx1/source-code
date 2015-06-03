@@ -35,5 +35,31 @@ namespace Group3_MVC4.Controllers
         {
             return View();
         }
+
+        public ActionResult ManageSellRequest()
+        {
+            return View();
+        }
+
+        public ActionResult ViewSellRequestDetail(string id)
+        {
+            return View();
+        }
+
+        public ActionResult DeleteSellRequest(string id)
+        {
+            return RedirectToAction("ViewSellRequestDetail");
+        }
+
+        public ActionResult AddNewSellRequest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddNewSellRequest(FormCollection infoFormCollection)
+        {
+            return RedirectToAction("ManageSellRequest");
+        }
     }
 }
