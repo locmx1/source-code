@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WatchShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BuyOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="WatchId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExchangeRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="varchar" MaxLength="20" />
+          <Property Name="OwnedWatch" Type="int" />
+          <Property Name="WishWatch" Type="int" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="WorkAt" Type="int" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="WatchId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Timepeice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WallLock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Shape" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Watch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GlassType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CaseMeterial" Type="nvarchar" MaxLength="50" />
+          <Property Name="MainColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Images" Type="varchar" MaxLength="250" />
+          <Property Name="InTransactionPrice" Type="float" Nullable="false" />
+          <Property Name="TransactionType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="MemberId" Type="varchar" MaxLength="20" />
+          <Property Name="ModelId" Type="int" />
+          <Property Name="AvailableAt" Type="int" />
+        </EntityType>
+        <EntityType Name="Watch_Tag">
+          <Key>
+            <PropertyRef Name="WatchId" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="WatchId" Type="int" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WristWatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="WatchType" Type="bit" Nullable="false" />
+          <Property Name="IsSmartWatch" Type="bit" Nullable="false" />
+          <Property Name="WaterProof" Type="int" />
+        </EntityType>
+        <Association Name="FK_BuyOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyOrder">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrder_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyOrder">
+              <PropertyRef Name="WatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeRequest_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="ExchangeRequest" Type="Self.ExchangeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeRequest">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeRequest_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="0..1" />
+          <End Role="ExchangeRequest" Type="Self.ExchangeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeRequest">
+              <PropertyRef Name="OwnedWatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeRequest_Watch1">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="0..1" />
+          <End Role="ExchangeRequest" Type="Self.ExchangeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeRequest">
+              <PropertyRef Name="WishWatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="WorkAt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellOrder">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrder_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellOrder">
+              <PropertyRef Name="WatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timepeice_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="Timepeice" Type="Self.Timepeice" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timepeice">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WallLock_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="WallLock" Type="Self.WallLock" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WallLock">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch">
+              <PropertyRef Name="AvailableAt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Tag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="Watch_Tag" Type="Self.Watch_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch_Tag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Tag_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="Watch_Tag" Type="Self.Watch_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch_Tag">
+              <PropertyRef Name="WatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WristWatch_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="WristWatch" Type="Self.WristWatch" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WristWatch">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WatchShopModelStoreContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuyOrder" EntityType="Self.BuyOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeRequest" EntityType="Self.ExchangeRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellOrder" EntityType="Self.SellOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timepeice" EntityType="Self.Timepeice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WallLock" EntityType="Self.WallLock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Watch" EntityType="Self.Watch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Watch_Tag" EntityType="Self.Watch_Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WristWatch" EntityType="Self.WristWatch" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BuyOrder_Order" Association="Self.FK_BuyOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="BuyOrder" EntitySet="BuyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrder_Watch" Association="Self.FK_BuyOrder_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="BuyOrder" EntitySet="BuyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeRequest_Member" Association="Self.FK_ExchangeRequest_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ExchangeRequest" EntitySet="ExchangeRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeRequest_Watch" Association="Self.FK_ExchangeRequest_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="ExchangeRequest" EntitySet="ExchangeRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeRequest_Watch1" Association="Self.FK_ExchangeRequest_Watch1">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="ExchangeRequest" EntitySet="ExchangeRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Role" Association="Self.FK_Member_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Store" Association="Self.FK_Member_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Brand" Association="Self.FK_Model_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrder_Order" Association="Self.FK_SellOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="SellOrder" EntitySet="SellOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrder_Watch" Association="Self.FK_SellOrder_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="SellOrder" EntitySet="SellOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timepeice_Watch" Association="Self.FK_Timepeice_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="Timepeice" EntitySet="Timepeice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WallLock_Watch" Association="Self.FK_WallLock_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="WallLock" EntitySet="WallLock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Member" Association="Self.FK_Watch_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Watch" EntitySet="Watch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Model" Association="Self.FK_Watch_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Watch" EntitySet="Watch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Store" Association="Self.FK_Watch_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Watch" EntitySet="Watch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Tag_Tag" Association="Self.FK_Watch_Tag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Watch_Tag" EntitySet="Watch_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Tag_Watch" Association="Self.FK_Watch_Tag_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="Watch_Tag" EntitySet="Watch_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WristWatch_Watch" Association="Self.FK_WristWatch_Watch">
+            <End Role="Watch" EntitySet="Watch" />
+            <End Role="WristWatch" EntitySet="WristWatch" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WatchShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Models" Relationship="Self.FK_Model_Brand" FromRole="Brand" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="BuyOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="WatchId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_BuyOrder_Order" FromRole="BuyOrder" ToRole="Order" />
+          <NavigationProperty Name="Watch" Relationship="Self.FK_BuyOrder_Watch" FromRole="BuyOrder" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="ExchangeRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedWatch" Type="Int32" />
+          <Property Name="WishWatch" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_ExchangeRequest_Member" FromRole="ExchangeRequest" ToRole="Member" />
+          <NavigationProperty Name="Watch" Relationship="Self.FK_ExchangeRequest_Watch" FromRole="ExchangeRequest" ToRole="Watch" />
+          <NavigationProperty Name="Watch1" Relationship="Self.FK_ExchangeRequest_Watch1" FromRole="ExchangeRequest" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="WorkAt" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ExchangeRequests" Relationship="Self.FK_ExchangeRequest_Member" FromRole="Member" ToRole="ExchangeRequest" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Member_Role" FromRole="Member" ToRole="Role" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Member_Store" FromRole="Member" ToRole="Store" />
+          <NavigationProperty Name="Watches" Relationship="Self.FK_Watch_Member" FromRole="Member" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Model_Brand" FromRole="Model" ToRole="Brand" />
+          <NavigationProperty Name="Watches" Relationship="Self.FK_Watch_Model" FromRole="Model" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BuyOrder" Relationship="Self.FK_BuyOrder_Order" FromRole="Order" ToRole="BuyOrder" />
+          <NavigationProperty Name="SellOrder" Relationship="Self.FK_SellOrder_Order" FromRole="Order" ToRole="SellOrder" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Member_Role" FromRole="Role" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="SellOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="WatchId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_SellOrder_Order" FromRole="SellOrder" ToRole="Order" />
+          <NavigationProperty Name="Watch" Relationship="Self.FK_SellOrder_Watch" FromRole="SellOrder" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Member_Store" FromRole="Store" ToRole="Member" />
+          <NavigationProperty Name="Watches" Relationship="Self.FK_Watch_Store" FromRole="Store" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Watches" Relationship="Self.Watch_Tag" FromRole="Tag" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Timepeice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Watch" Relationship="Self.FK_Timepeice_Watch" FromRole="Timepeice" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="WallLock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Shape" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Watch" Relationship="Self.FK_WallLock_Watch" FromRole="WallLock" ToRole="Watch" />
+        </EntityType>
+        <EntityType Name="Watch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GlassType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CaseMeterial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="InTransactionPrice" Type="Double" Nullable="false" />
+          <Property Name="TransactionType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MemberId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ModelId" Type="Int32" />
+          <Property Name="AvailableAt" Type="Int32" />
+          <NavigationProperty Name="BuyOrders" Relationship="Self.FK_BuyOrder_Watch" FromRole="Watch" ToRole="BuyOrder" />
+          <NavigationProperty Name="ExchangeRequests" Relationship="Self.FK_ExchangeRequest_Watch" FromRole="Watch" ToRole="ExchangeRequest" />
+          <NavigationProperty Name="ExchangeRequests1" Relationship="Self.FK_ExchangeRequest_Watch1" FromRole="Watch" ToRole="ExchangeRequest" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Watch_Member" FromRole="Watch" ToRole="Member" />
+          <NavigationProperty Name="Model" Relationship="Self.FK_Watch_Model" FromRole="Watch" ToRole="Model" />
+          <NavigationProperty Name="SellOrders" Relationship="Self.FK_SellOrder_Watch" FromRole="Watch" ToRole="SellOrder" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Watch_Store" FromRole="Watch" ToRole="Store" />
+          <NavigationProperty Name="Timepeice" Relationship="Self.FK_Timepeice_Watch" FromRole="Watch" ToRole="Timepeice" />
+          <NavigationProperty Name="WallLock" Relationship="Self.FK_WallLock_Watch" FromRole="Watch" ToRole="WallLock" />
+          <NavigationProperty Name="WristWatch" Relationship="Self.FK_WristWatch_Watch" FromRole="Watch" ToRole="WristWatch" />
+          <NavigationProperty Name="Tags" Relationship="Self.Watch_Tag" FromRole="Watch" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="WristWatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="WatchType" Type="Boolean" Nullable="false" />
+          <Property Name="IsSmartWatch" Type="Boolean" Nullable="false" />
+          <Property Name="WaterProof" Type="Int32" />
+          <NavigationProperty Name="Watch" Relationship="Self.FK_WristWatch_Watch" FromRole="WristWatch" ToRole="Watch" />
+        </EntityType>
+        <Association Name="FK_Model_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyOrder">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyOrder_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="BuyOrder" Type="Self.BuyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyOrder">
+              <PropertyRef Name="WatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeRequest_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="ExchangeRequest" Type="Self.ExchangeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeRequest">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeRequest_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="0..1" />
+          <End Role="ExchangeRequest" Type="Self.ExchangeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeRequest">
+              <PropertyRef Name="OwnedWatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeRequest_Watch1">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="0..1" />
+          <End Role="ExchangeRequest" Type="Self.ExchangeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeRequest">
+              <PropertyRef Name="WishWatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="WorkAt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellOrder">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellOrder_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="SellOrder" Type="Self.SellOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellOrder">
+              <PropertyRef Name="WatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Watch_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Watch">
+              <PropertyRef Name="AvailableAt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timepeice_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="Timepeice" Type="Self.Timepeice" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timepeice">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WallLock_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="WallLock" Type="Self.WallLock" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WallLock">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WristWatch_Watch">
+          <End Role="Watch" Type="Self.Watch" Multiplicity="1" />
+          <End Role="WristWatch" Type="Self.WristWatch" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Watch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WristWatch">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Watch_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <End Role="Watch" Type="Self.Watch" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="WatchShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="BuyOrders" EntityType="Self.BuyOrder" />
+          <EntitySet Name="ExchangeRequests" EntityType="Self.ExchangeRequest" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SellOrders" EntityType="Self.SellOrder" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="Timepeices" EntityType="Self.Timepeice" />
+          <EntitySet Name="WallLocks" EntityType="Self.WallLock" />
+          <EntitySet Name="Watches" EntityType="Self.Watch" />
+          <EntitySet Name="WristWatches" EntityType="Self.WristWatch" />
+          <AssociationSet Name="FK_Model_Brand" Association="Self.FK_Model_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrder_Order" Association="Self.FK_BuyOrder_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="BuyOrder" EntitySet="BuyOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyOrder_Watch" Association="Self.FK_BuyOrder_Watch">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="BuyOrder" EntitySet="BuyOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeRequest_Member" Association="Self.FK_ExchangeRequest_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="ExchangeRequest" EntitySet="ExchangeRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeRequest_Watch" Association="Self.FK_ExchangeRequest_Watch">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="ExchangeRequest" EntitySet="ExchangeRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeRequest_Watch1" Association="Self.FK_ExchangeRequest_Watch1">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="ExchangeRequest" EntitySet="ExchangeRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Role" Association="Self.FK_Member_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Store" Association="Self.FK_Member_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Member" Association="Self.FK_Watch_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Watch" EntitySet="Watches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Model" Association="Self.FK_Watch_Model">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="Watch" EntitySet="Watches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrder_Order" Association="Self.FK_SellOrder_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="SellOrder" EntitySet="SellOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellOrder_Watch" Association="Self.FK_SellOrder_Watch">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="SellOrder" EntitySet="SellOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Watch_Store" Association="Self.FK_Watch_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Watch" EntitySet="Watches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timepeice_Watch" Association="Self.FK_Timepeice_Watch">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="Timepeice" EntitySet="Timepeices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WallLock_Watch" Association="Self.FK_WallLock_Watch">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="WallLock" EntitySet="WallLocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WristWatch_Watch" Association="Self.FK_WristWatch_Watch">
+            <End Role="Watch" EntitySet="Watches" />
+            <End Role="WristWatch" EntitySet="WristWatches" />
+          </AssociationSet>
+          <AssociationSet Name="Watch_Tag" Association="Self.Watch_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="Watch" EntitySet="Watches" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WatchShopModelStoreContainer" CdmEntityContainer="WatchShopEntities">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="WatchShopModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuyOrders">
+            <EntityTypeMapping TypeName="WatchShopModel.BuyOrder">
+              <MappingFragment StoreEntitySet="BuyOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WatchId" ColumnName="WatchId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeRequests">
+            <EntityTypeMapping TypeName="WatchShopModel.ExchangeRequest">
+              <MappingFragment StoreEntitySet="ExchangeRequest">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="OwnedWatch" ColumnName="OwnedWatch" />
+                <ScalarProperty Name="WishWatch" ColumnName="WishWatch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="WatchShopModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="WorkAt" ColumnName="WorkAt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="WatchShopModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="WatchShopModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="WatchShopModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellOrders">
+            <EntityTypeMapping TypeName="WatchShopModel.SellOrder">
+              <MappingFragment StoreEntitySet="SellOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WatchId" ColumnName="WatchId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="WatchShopModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="WatchShopModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timepeices">
+            <EntityTypeMapping TypeName="WatchShopModel.Timepeice">
+              <MappingFragment StoreEntitySet="Timepeice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WallLocks">
+            <EntityTypeMapping TypeName="WatchShopModel.WallLock">
+              <MappingFragment StoreEntitySet="WallLock">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Watches">
+            <EntityTypeMapping TypeName="WatchShopModel.Watch">
+              <MappingFragment StoreEntitySet="Watch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GlassType" ColumnName="GlassType" />
+                <ScalarProperty Name="CaseMeterial" ColumnName="CaseMeterial" />
+                <ScalarProperty Name="MainColor" ColumnName="MainColor" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="InTransactionPrice" ColumnName="InTransactionPrice" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="AvailableAt" ColumnName="AvailableAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WristWatches">
+            <EntityTypeMapping TypeName="WatchShopModel.WristWatch">
+              <MappingFragment StoreEntitySet="WristWatch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="WatchType" ColumnName="WatchType" />
+                <ScalarProperty Name="IsSmartWatch" ColumnName="IsSmartWatch" />
+                <ScalarProperty Name="WaterProof" ColumnName="WaterProof" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Watch_Tag" TypeName="WatchShopModel.Watch_Tag" StoreEntitySet="Watch_Tag">
+            <EndProperty Name="Tag">
+              <ScalarProperty Name="Id" ColumnName="TagId" />
+            </EndProperty>
+            <EndProperty Name="Watch">
+              <ScalarProperty Name="Id" ColumnName="WatchId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

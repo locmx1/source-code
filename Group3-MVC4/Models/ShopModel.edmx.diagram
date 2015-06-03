@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="174ef2adfcf34bc088581d1158bacd51" Name="Diagram1">
+        <EntityTypeShape EntityType="WatchShopModel.Brand" Width="1.5" PointX="3.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.BuyOrder" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.ExchangeRequest" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Member" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Model" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Order" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Role" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.SellOrder" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Store" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Tag" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Timepeice" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.WallLock" Width="1.5" PointX="10.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.Watch" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopModel.WristWatch" Width="1.5" PointX="10.5" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="WatchShopModel.FK_Model_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_BuyOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_BuyOrder_Watch" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_ExchangeRequest_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_ExchangeRequest_Watch" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_ExchangeRequest_Watch1" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_Member_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_Member_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_Watch_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_Watch_Model" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_SellOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_SellOrder_Watch" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_Watch_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_Timepeice_Watch" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_WallLock_Watch" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.FK_WristWatch_Watch" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchShopModel.Watch_Tag" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
