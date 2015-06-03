@@ -2,18 +2,13 @@
     Layout = null;
 }
 
-
 <!doctype html>
 <html class="fixed">
 <head>
-
     <!-- Basic -->
     <meta charset="UTF-8">
 
-    <title>Dashboard | SHARED ON THEMELOCK.COM</title>
-    <meta name="keywords" content="HTML5 Admin Template" />
-    <meta name="description" content="Porto Admin - Responsive HTML5 Template">
-    <meta name="author" content="okler.net">
+    <title>@ViewBag.Title</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -30,8 +25,8 @@
     <!-- Specific Page Vendor CSS -->
     <link rel="stylesheet" href="~/Content/Admin/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
     <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
-    <link rel="stylesheet" href="~/Content/Admin/vendor/morris/morris.css" />
-
+    <link rel="stylesheet" href="~/Content/Admin/vendor/morris/morris.css"/>
+    <link href="~/Content/Admin/vendor/jquery-datatables-bs3/assets/css/datatables.css" rel="stylesheet" />
     <!-- Theme CSS -->
     <link rel="stylesheet" href="~/Content/Admin/stylesheets/theme.css" />
 
@@ -275,9 +270,6 @@
             <aside id="sidebar-left" class="sidebar-left">
 
                 <div class="sidebar-header">
-                    <div class="sidebar-title">
-                        Tính Năng
-                    </div>
                     <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
                         <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
                     </div>
@@ -299,7 +291,7 @@
                                 
                                 <li class="nav-parent">
                                     <a>
-                                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                        <i class="fa fa-bank" aria-hidden="true"></i>
                                         <span>Quản Lý Chi Nhánh</span>
                                     </a>
                                     <ul class="nav nav-children">
@@ -319,64 +311,31 @@
                                 </li>
                                 <li class="nav-parent">
                                     <a>
-                                        <i class="fa fa-list-alt" aria-hidden="true"></i>
-                                        <span>Quản Lý Nhân Viên</span>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        <span>Quản Lý Yêu Cầu</span>
                                     </a>
                                     <ul class="nav nav-children">
                                         <li>
-                                            <a href="~/Admin/CreateNewStaff">
-                                                Tạo Mới Nhân Viên
+                                            <a href="@Url.Action("ManageSellRequest", "Admin")">
+                                                Xem tất cả yêu cầu
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="~/Admin/ModifyStaff">
-                                                Cập Nhật Nhân Viên
+                                            <a href="@Url.Action("AddNewSellRequest", "Admin")">
+                                                Thêm Mới
                                             </a>
                                         </li>
-
-
                                     </ul>
-                                </li>
-                               
+                                </li>                               
                             </ul>
                         </nav>
-
-                        <hr class="separator" />
-
-
-
-                        
+                        <hr class="separator" />                        
                     </div>
-
                 </div>
-
             </aside>
             <!-- end: sidebar -->
-
-            <section role="main" class="content-body">
-                <header class="page-header">
-                    <h2>Thống Kê</h2>
-
-                    <div class="right-wrapper pull-right">
-                        <ol class="breadcrumbs">
-                            <li>
-                                <a href="index.html">
-                                    <i class="fa fa-home"></i>
-                                </a>
-                            </li>
-                            <li><span>Thống Kê</span></li>
-                        </ol>
-
-                        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
-                    </div>
-                </header>
-
-                <!-- start: page -->
-                @RenderBody()
-                <!-- end: page -->
-            </section>
+            @RenderBody()
         </div>
-
         <aside id="sidebar-right" class="sidebar-right">
             <div class="nano">
                 <div class="nano-content">
