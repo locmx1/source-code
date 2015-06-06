@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Group3_MVC4.Models;
+using System.IO;
 
 namespace Group3_MVC4.Controllers
 {
@@ -26,12 +27,7 @@ namespace Group3_MVC4.Controllers
         {
             return View();
         }
-
-        public ActionResult CreateSellingRequest()
-        {
-            return View();
-        }
-
+        
         public ActionResult Tag(string id, string title)
         {
             return View();
@@ -87,6 +83,44 @@ namespace Group3_MVC4.Controllers
             ViewBag.Message = message;
             return View();
         }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult CreateSellingRequest()
+        {
+            using (var model = new WatchShopEntities())
+            {
+                var models = from s in model.Models select s;
+                var stores = from s in model.Stores select s;
+                ViewBag.models = models.ToList();
+                ViewBag.stores = stores.ToList();
+                return View();
+            }
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult CreateSellingRequest(Watch userWatch)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
 
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/Upload"), fileName);
+                    userWatch.Images = path;
+                    file.SaveAs(path);
+                }
+            }
+
+            using (var model = new WatchShopEntities())
+            {
+                userWatch.TransactionType = 1;
+                userWatch.Status = 1;
+                var member = model.Members.Single(s => s.Id == userWatch.MemberId);
+                member.Watches.Add(userWatch);
+                model.SaveChanges();
+                return RedirectToAction("index");
+            }
+            
+        }
     }
 }

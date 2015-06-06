@@ -6,24 +6,38 @@
     var stores = ViewBag.stores;
     List<SelectListItem> listmodels = new List<SelectListItem>();
     List<SelectListItem> liststores = new List<SelectListItem>();
-   
-    
+
+    var selectedModel = 0;
+    var selectedStore = 0;
     foreach (var model in models)
     {
-            listmodels.Add(new SelectListItem
+        if (model.Id == Model.ModelId && selectedModel <=0)
+        {
+            selectedModel = (-selectedModel);
+        }
+        else
+        {
+            selectedModel--;
+        }
+        listmodels.Add(new SelectListItem
             {
                 Text = model.Name,
-                Value = model.Id.ToString(),
-                Selected = (model.Id == Model.ModelId)
+                Value = model.Id.ToString()
             });              
     }
     foreach (var store in stores)
-    {       
+    {
+        if (store.Id == Model.AvailableAt && selectedStore <= 0)
+        {
+            selectedStore = (-selectedStore);
+        }else
+        {
+            selectedStore--;
+        }
             liststores.Add(new SelectListItem
             {
                 Text = store.Name,
                 Value = store.Id.ToString(),
-                Selected = (store.Id == Model.AvailableAt)
             });        
     }
 }
@@ -51,7 +65,7 @@
                 </header>
                 <form class="form-horizontal form-bordered" method="post" action="@Url.Action("ViewSellRequestDetail", "Admin")">
                     <div class="panel-body">
-                        @Html.Hidden("id", @Model.Id)
+                        @Html.Hidden("Id", @Model.Id)
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Khách Hàng</label>
                             <p class="col-md-6 form-control-static" for="inputPlaceholder">@Model.MemberId</p>
@@ -59,28 +73,28 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Tên Đồng Hồ</label>
                             <div class="col-md-6">
-                                <input class="form-control" placeholder="Tên Đồng Hồ" id="inputPlaceholder" type="text" value="@Model.Name" name="name">
+                                <input class="form-control" placeholder="Tên Đồng Hồ" id="inputPlaceholder" type="text" value="@Model.Name" name="Name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Mặt Kính</label>
                             <div class="col-md-6">
-                                <input class="form-control" placeholder="Mặt Kính" id="inputPlaceholder" type="text" value="@Model.GlassType" name="glassType">
+                                <input class="form-control" placeholder="Mặt Kính" id="inputPlaceholder" type="text" value="@Model.GlassType" name="GlassType">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Chất liệu</label>
                             <div class="col-md-6">
-                                <input class="form-control" placeholder="Chất Liệu" id="inputPlaceholder" type="text" value="@Model.CaseMeterial" name="caseMeterial">
+                                <input class="form-control" placeholder="Chất Liệu" id="inputPlaceholder" type="text" value="@Model.CaseMeterial" name="CaseMeterial">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Màu sắc</label>
                             <div class="col-md-6">
-                                <input class="form-control" placeholder="Màu sắc" id="inputPlaceholder" type="text" value="@Model.MainColor" name="mainColor">
+                                <input class="form-control" placeholder="Màu sắc" id="inputPlaceholder" type="text" value="@Model.MainColor" name="MainColor">
                             </div>
                         </div>
 
@@ -107,20 +121,20 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Description</label>
                             <div class="col-md-6">
-                                <textarea class="form-control" placeholder="Description" name="description"></textarea>
+                                <textarea class="form-control" placeholder="Description" name="Description"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Model</label>
                             <div class="col-md-6">                                
-                                @Html.DropDownList("model", listmodels, new { @class = "form-control" })
+                                @Html.DropDownList("ModelId", listmodels, new { @class = "form-control" })
 
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputPlaceholder">Model</label>
                             <div class="col-md-6">
-                                @Html.DropDownList("store", liststores, new { @class = "form-control" })
+                                @Html.DropDownList("AvailableAt", liststores, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -136,7 +150,8 @@
 </section>
 
 <script src="~/Content/Admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-
+<script src="~/Content/Admin/vendor/jquery-ui/js/jquery-1.10.2.js"></script>
 <script>
-    //$("#model").get(0).selectedIndex = 2;
+    $("#watchModel").get(0).selectedIndex = @selectedModel;
+    $("#watchStore").get(0).selectedIndex = @selectedStore;
 </script>

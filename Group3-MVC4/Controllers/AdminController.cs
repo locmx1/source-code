@@ -79,26 +79,32 @@ namespace Group3_MVC4.Controllers
             }
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ViewSellRequestDetail(FormCollection collection)
-        {
-            int watchId = Int32.Parse(collection.Get("id"));
-            String watchName = collection.Get("name");
-            String watchGlassType = collection.Get("glassType");
-            String watchCaseMaterial = collection.Get("caseMeterial");
-            String watchMainColor = collection.Get("mainColor");
-            String description = collection.Get("description");
+        public ActionResult ViewSellRequestDetail(Watch editWatch)
+        {            
             using (var model = new WatchShopEntities())
             {
-                Watch watch = model.Watches.Single(s => s.Id == watchId);
-                watch.Name = watchName;
-                watch.GlassType = watchGlassType;
-                watch.CaseMeterial = watchCaseMaterial;
-                watch.MainColor = watchMainColor;
-                watch.Description = description;
+                Watch watch = model.Watches.Single(s => s.Id == editWatch.Id);
+                watch.Name = editWatch.Name;
+                watch.GlassType = editWatch.GlassType;
+                watch.CaseMeterial = editWatch.CaseMeterial;
+                watch.MainColor = editWatch.MainColor;
+                watch.Description = editWatch.Description;
+                watch.ModelId = editWatch.ModelId;
+                watch.AvailableAt = editWatch.AvailableAt;
                 model.SaveChanges();
                 return RedirectToAction("ManageSellRequest");
             }
         }
+
+        public ActionResult ManageStaff()
+        {
+            using (var model = new WatchShopEntities())
+            {
+                IEnumerable<Member> members = (IEnumerable<Member>)from s in model.Members where s.RoleId == 2 select s;
+                return View(members.ToList());
+            }
+        }
+
 
     }
 }
