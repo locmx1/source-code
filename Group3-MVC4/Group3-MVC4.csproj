@@ -39,10 +39,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -108,10 +116,70 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Brand.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyOrder.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyWatchModel.cs" />
+    <Compile Include="Models\ExchangeRequest.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SellOrder.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Store.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tag.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Timepeice.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WallLock.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Watch.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WatchSystem.cs" />
+    <Compile Include="Models\WristWatch.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1676,6 +1744,7 @@
     <Content Include="Content\dest\css\color-6.css" />
     <Content Include="Content\dest\css\color-7.css" />
     <Content Include="Content\dest\css\color-8.css" />
+    <Content Include="Content\dest\css\custom.css" />
     <Content Include="Content\dest\css\font-awesome.min.css" />
     <Content Include="Content\dest\css\green.css" />
     <Content Include="Content\dest\css\lightblue.css" />
@@ -1742,7 +1811,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -2032,6 +2100,51 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Mail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\ShopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ShopModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShopModel.edmx.diagram">
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ShopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Tag.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ManageSellRequest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewSellRequestDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddNewSellRequest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\LogIn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\MyTransaction.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

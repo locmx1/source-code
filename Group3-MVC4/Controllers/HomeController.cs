@@ -37,6 +37,12 @@ namespace Group3_MVC4.Controllers
             return View();
         }
 
+        public ActionResult SendMessage()
+        {
+            WatchSystem.SendNotification("01663855778");
+            return Json("Done", JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Search()
         {
             return View();
