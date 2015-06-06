@@ -1,0 +1,141 @@
+﻿@model Group3_MVC4.Models.BuyWatchModel
+@{
+    ViewBag.Title = "BuyWatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @using (Html.BeginForm("BuyWatch", "Home", new { }, FormMethod.Post, new { role = "form" }))
+    {
+        <div class="col-sm-6" align="center">
+            <h4>ĐẶT MUA</h4>
+            <h6>Chi Tiết Đồng Hồ</h6>
+            <div class="space20">&nbsp;</div>
+
+            <div class="form-block">
+                <label for="watchType">Loại Đồng Hồ</label>
+                
+                <select name="watchType" id="watchType" onchange="ChangeForm()">
+                    <option value="">Đeo Tay</option>
+                    <option value="">Quả Lắc</option>
+                    <option value="">Treo Tường</option>
+                </select>
+            </div>
+            <script>
+                function ChangeForm() {
+                    window.alert("I am an alert box!");
+                    HTMLDivElement.getById("Brand").setAttribute("hidden");
+
+                }
+            </script>
+
+            <div class="form-block" id="Brand">
+                <label for="watchBrand">Thương Hiệu</label>
+                @*@Html.DropDownListFor(m => m.Watch.Model.Brand.Name, Model.BrandListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="watchModel">Mẫu</label>
+                @Html.DropDownListFor(m => m.ModelId, Model.ModelListItems)
+            </div>
+            <div class="form-block">
+                <label for="glassMaterial">Chất Liệu Mặt Kính</label>
+                @Html.DropDownListFor(m => m.GlassType, Model.GrassMaterialListItems)
+            </div>
+            <div class="form-block">
+                <label for="glassShape">Hình Dạng Mặt Kính</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="caseMaterrial">Chất Liệu Vỏ</label>
+                @Html.DropDownListFor(m => m.CaseMeterial, Model.CaseMaterrialListItems)
+            </div>
+            <div class="form-block">
+                <label for="ChainMaterial">Chất Liệu Quai</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="MainColor">Màu chủ đạo</label>
+                @Html.TextBoxFor(m => m.MainColor, new { @type = "color" })
+            </div>
+            <div class="form-block">
+                <label for="displayType">Kiểu Hiển Thị</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="buckleType">Kiểu Khóa</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="gender">Loại</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="atmDegree">Chỉ Số Chống Thấm</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="guarantee">Bảo Hành</label>
+                @*@Html.DropDownListFor(m => m.Watch., Model.ModelListItems)*@
+                <select name="watchType" id="watchType">
+                    <option value="">Item A</option>
+                    <option value="">Item B</option>
+                    <option value="">Item C</option>
+                </select>
+
+            </div>
+            <div class="form-block">
+                <label for="imageList">Ảnh</label>
+                @Html.TextBoxFor(m => m.Images, new { @type = "file" })
+            </div>
+            <div class="form-block">
+                <label for="wantedPrice">Tầm Giá (VNĐ)</label>
+                @Html.TextBoxFor(m => m.InTransactionPrice)
+            </div>
+
+            <div class="form-block">
+                <label for="fullName">Họ Tên*</label>
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="form-block">
+                <label for="phone">Điện Thoại*</label>
+                <input type="text" id="phone" required>
+            </div>
+            <button type="submit" class="beta-btn beta-btn-3d beta-btn-denim beta-btn-small"><i class="shift-left fa fa-signal"></i>Đặt Mua</button>
+        </div>
+    }
+</div>
