@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Group3_MVC4.Models.Watch>
+@{
     ViewBag.Title = "Quản lý yêu cầu";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -31,37 +32,21 @@
                             <th>Thao tác</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>0123456789</td>
-                            <td>04-05-2015</td>
-                            <td>Chờ kiểm tra</td>
-                            <td class="actions-hover actions-fade">
-                                <a href="@Url.Action("ViewSellRequestDetail", "Admin")"><i class="fa fa-pencil"></i></a>
-                                <a href="@Url.Action("DeleteSellRequest", "Admin")" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>0123456789</td>
-                            <td>04-05-2015</td>
-                            <td>Chờ kiểm tra</td>
-                            <td class="actions-hover actions-fade">
-                                <a href="@Url.Action("ViewSellRequestDetail", "Admin")"><i class="fa fa-pencil"></i></a>
-                                <a href="@Url.Action("DeleteSellRequest", "Admin")" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>0123456789</td>
-                            <td>04-05-2015</td>
-                            <td>Chờ kiểm tra</td>
-                            <td class="actions-hover actions-fade">
-                                <a href="@Url.Action("ViewSellRequestDetail", "Admin")"><i class="fa fa-pencil"></i></a>
-                                <a href="@Url.Action("DeleteSellRequest", "Admin")" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                            </td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.MemberId</td>
+                                <td>04-05-2015</td>
+                                <td>Chờ kiểm tra</td>
+                                <td class="actions-hover actions-fade">
+                                    <a href="@Url.Action("ViewSellRequestDetail", "Admin", new {id = @item.Id })"><i class="fa fa-pencil"></i></a>
+                                    <a href="@Url.Action("DeleteSellRequest", "Admin", new { id = @item.Id })" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        }                                               
                     </tbody>
                 </table>
             </div>

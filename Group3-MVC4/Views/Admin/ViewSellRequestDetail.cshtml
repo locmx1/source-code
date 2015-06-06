@@ -1,6 +1,31 @@
-﻿@{
+﻿@model Group3_MVC4.Models.Watch
+@{
     ViewBag.Title = "Cậ nhật thông tin yêu cầu cho khách hàng";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var models = ViewBag.models;
+    var stores = ViewBag.stores;
+    List<SelectListItem> listmodels = new List<SelectListItem>();
+    List<SelectListItem> liststores = new List<SelectListItem>();
+   
+    
+    foreach (var model in models)
+    {
+            listmodels.Add(new SelectListItem
+            {
+                Text = model.Name,
+                Value = model.Id.ToString(),
+                Selected = (model.Id == Model.ModelId)
+            });              
+    }
+    foreach (var store in stores)
+    {       
+            liststores.Add(new SelectListItem
+            {
+                Text = store.Name,
+                Value = store.Id.ToString(),
+                Selected = (store.Id == Model.AvailableAt)
+            });        
+    }
 }
 <link href="~/Content/Admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet" />
 
@@ -24,105 +49,38 @@
 
                     <h2 class="panel-title">Cập nhật thông tin yêu cầu cho khách hàng</h2>
                 </header>
-                <div class="panel-body">
-                    <form class="form-horizontal form-bordered" method="get">
+                <form class="form-horizontal form-bordered" method="post" action="@Url.Action("ViewSellRequestDetail", "Admin")">
+                    <div class="panel-body">
+                        @Html.Hidden("id", @Model.Id)
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Default</label>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Khách Hàng</label>
+                            <p class="col-md-6 form-control-static" for="inputPlaceholder">@Model.MemberId</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Tên Đồng Hồ</label>
                             <div class="col-md-6">
-                                <input class="form-control" id="inputDefault" type="text">
+                                <input class="form-control" placeholder="Tên Đồng Hồ" id="inputPlaceholder" type="text" value="@Model.Name" name="name">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDisabled">Disabled</label>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Mặt Kính</label>
                             <div class="col-md-6">
-                                <input class="form-control" id="inputDisabled" placeholder="Disabled input here..." disabled="true" type="text">
+                                <input class="form-control" placeholder="Mặt Kính" id="inputPlaceholder" type="text" value="@Model.GlassType" name="glassType">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputReadOnly">Read-Only Input</label>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Chất liệu</label>
                             <div class="col-md-6">
-                                <input value="Read-Only Input" id="inputReadOnly" class="form-control" readonly="readonly" type="text">
+                                <input class="form-control" placeholder="Chất Liệu" id="inputPlaceholder" type="text" value="@Model.CaseMeterial" name="caseMeterial">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputHelpText">Help text</label>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Màu sắc</label>
                             <div class="col-md-6">
-                                <input class="form-control" id="inputHelpText" type="text">
-                                <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputRounded">Rounded Input</label>
-                            <div class="col-md-6">
-                                <input class="form-control input-rounded" id="inputRounded" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputFocus">Input focus</label>
-                            <div class="col-md-6">
-                                <input class="form-control" id="inputFocus" value="This is focused..." type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputPlaceholder">Placeholder</label>
-                            <div class="col-md-6">
-                                <input class="form-control" placeholder="placeholder" id="inputPlaceholder" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputPassword">Password</label>
-                            <div class="col-md-6">
-                                <input class="form-control" placeholder="" id="inputPassword" type="password">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class=" col-md-3 control-label">Static control</label>
-                            <div class="col-lg-6">
-                                <p class="form-control-static">email@example.com</p>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Left Icon</label>
-                            <div class="col-md-6">
-                                <div class="input-group input-group-icon">
-                                    <span class="input-group-addon">
-                                        <span class="icon"><i class="fa fa-user"></i></span>
-                                    </span>
-                                    <input class="form-control" placeholder="Left icon" type="text">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Right Icon</label>
-                            <div class="col-md-6">
-                                <div class="input-group input-group-icon">
-                                    <input class="form-control" placeholder="Right icon" type="text">
-                                    <span class="input-group-addon">
-                                        <span class="icon"><i class="fa fa-user"></i></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Search</label>
-                            <div class="col-md-6">
-                                <div class="input-group input-search">
-                                    <input class="form-control" name="q" id="q" placeholder="Search..." type="text">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                                    </span>
-                                </div>
+                                <input class="form-control" placeholder="Màu sắc" id="inputPlaceholder" type="text" value="@Model.MainColor" name="mainColor">
                             </div>
                         </div>
 
@@ -147,94 +105,30 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Vertical Group</label>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Description</label>
                             <div class="col-md-6">
-                                <section class="form-group-vertical">
-                                    <input class="form-control" placeholder="Username" type="text">
-                                    <input class="form-control" placeholder="Email" type="text">
-                                    <input class="form-control last" placeholder="Password" type="password">
-                                </section>
+                                <textarea class="form-control" placeholder="Description" name="description"></textarea>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label class="control-label col-md-3">Vertical Group w/ icon</label>
-                            <div class="col-md-6">
-                                <section class="form-group-vertical">
-                                    <div class="input-group input-group-icon">
-                                        <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                        </span>
-                                        <input class="form-control" placeholder="Username" type="text">
-                                    </div>
-                                    <div class="input-group input-group-icon">
-                                        <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-key"></i></span>
-                                        </span>
-                                        <input class="form-control" placeholder="Password" type="text">
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Model</label>
+                            <div class="col-md-6">                                
+                                @Html.DropDownList("model", listmodels, new { @class = "form-control" })
 
-                        <div class="form-group has-success">
-                            <label class="col-md-3 control-label" for="inputSuccess">Input with success</label>
-                            <div class="col-md-6">
-                                <input class="form-control" id="inputSuccess" type="text">
                             </div>
                         </div>
-                        <div class="form-group has-warning">
-                            <label class="col-md-3 control-label" for="inputWarning">Input with warning</label>
-                            <div class="col-md-6">
-                                <input class="form-control" id="inputWarning" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group has-error">
-                            <label class="col-md-3 control-label" for="inputError">Input with error</label>
-                            <div class="col-md-6">
-                                <input class="form-control" id="inputError" type="text">
-                            </div>
-                        </div>
-
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputTooltip">Input with Tooltip</label>
+                            <label class="col-md-3 control-label" for="inputPlaceholder">Model</label>
                             <div class="col-md-6">
-                                <input placeholder="Hover me" title="" data-toggle="tooltip" data-trigger="hover" class="form-control" data-original-title="Place your tooltip info here" id="inputTooltip" type="text">
+                                @Html.DropDownList("store", liststores, new { @class = "form-control" })
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputPopover">Input with Popover</label>
-                            <div class="col-md-6">
-                                <input placeholder="Click Here" class="form-control" data-toggle="popover" data-placement="top" data-original-title="The Title" data-content="Content goes here..." data-trigger="click" id="inputPopover" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Column sizing</label>
-                            <div class="col-sm-8">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <input class="form-control" placeholder=".col-sm-2" type="text">
-                                    </div>
-                                    <div class="visible-xs mb-md"></div>
-                                    <div class="col-sm-3">
-                                        <input class="form-control" placeholder=".col-sm-3" type="text">
-                                    </div>
-                                    <div class="visible-xs mb-md"></div>
-                                    <div class="col-sm-4">
-                                        <input class="form-control" placeholder=".col-sm-4" type="text">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <footer class="panel-footer">
-                    <button class="btn btn-primary right">Xạc nhận</button>
-                    <button type="reset" class="btn btn-default right">Reset</button>
-                </footer>
+                    </div>
+                    <footer class="panel-footer">
+                        <button class="btn btn-primary right">Xạc nhận</button>
+                        <button type="reset" class="btn btn-default right">Reset</button>
+                    </footer>
+                </form>
             </section>
         </div>
     </div>
@@ -242,3 +136,7 @@
 </section>
 
 <script src="~/Content/Admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+
+<script>
+    //$("#model").get(0).selectedIndex = 2;
+</script>

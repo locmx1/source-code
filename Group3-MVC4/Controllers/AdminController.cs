@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Group3_MVC4.Models;
 
 namespace Group3_MVC4.Controllers
 {
@@ -36,16 +37,6 @@ namespace Group3_MVC4.Controllers
             return View();
         }
 
-        public ActionResult ManageSellRequest()
-        {
-            return View();
-        }
-
-        public ActionResult ViewSellRequestDetail(string id)
-        {
-            return View();
-        }
-
         public ActionResult DeleteSellRequest(string id)
         {
             return RedirectToAction("ViewSellRequestDetail");
@@ -61,5 +52,53 @@ namespace Group3_MVC4.Controllers
         {
             return RedirectToAction("ManageSellRequest");
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ManageSellRequest()
+        {
+            using (var model = new WatchShopEntities())
+            {
+                IEnumerable<Watch> watches = (IEnumerable<Watch>)from s in model.Watches where s.TransactionType == 1 select s;
+                return View(watches.ToList());
+            }
+
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ViewSellRequestDetail(string id)
+        {
+            int watchId = Int32.Parse(id);
+            //int watchId = 8;
+            using (var model = new WatchShopEntities())
+            {
+                Watch watch = model.Watches.Single(s => s.Id == watchId);
+                var models = from s in model.Models select s;
+                var stores = from s in model.Stores select s;
+                ViewBag.models = models.ToList();
+                ViewBag.stores = stores.ToList();
+                return View(watch);
+            }
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ViewSellRequestDetail(FormCollection collection)
+        {
+            int watchId = Int32.Parse(collection.Get("id"));
+            String watchName = collection.Get("name");
+            String watchGlassType = collection.Get("glassType");
+            String watchCaseMaterial = collection.Get("caseMeterial");
+            String watchMainColor = collection.Get("mainColor");
+            String description = collection.Get("description");
+            using (var model = new WatchShopEntities())
+            {
+                Watch watch = model.Watches.Single(s => s.Id == watchId);
+                watch.Name = watchName;
+                watch.GlassType = watchGlassType;
+                watch.CaseMeterial = watchCaseMaterial;
+                watch.MainColor = watchMainColor;
+                watch.Description = description;
+                model.SaveChanges();
+                return RedirectToAction("ManageSellRequest");
+            }
+        }
+
     }
 }

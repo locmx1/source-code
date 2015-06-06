@@ -1,6 +1,41 @@
 ﻿@{
     ViewBag.Title = "Bán";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var models = ViewBag.models;
+    var stores = ViewBag.stores;
+    List<SelectListItem> listmodels = new List<SelectListItem>
+    {
+        new SelectListItem
+        { 
+            Text="---- Chọn model thích hợp ----",
+            Value="null",
+            Selected = true
+        }
+    };
+    List<SelectListItem> liststores = new List<SelectListItem>{
+        new SelectListItem
+        { 
+            Text="---- Chọn cửa hàng bạn muốn bán ----",
+            Value="null",
+            Selected = true
+        }
+    };
+    foreach (var model in models)
+    {
+        listmodels.Add(new SelectListItem
+        {
+            Text = model.Name,
+            Value = model.Id.ToString()
+        });
+    }
+    foreach (var store in stores)
+    {
+        liststores.Add(new SelectListItem
+        {
+            Text = store.Name,
+            Value = store.Id.ToString()
+        });
+    }
 }
 
 <div id="content" class="space-top-none" style="border: 2px solid rgba(0,0,0,0.1); padding: 10px; border-radius: 5px; ">
@@ -13,19 +48,28 @@
             <div class="space20">&nbsp;</div>
             <form action="#" method="post" class="contact-form">
                 <div class="form-block">
-                    <input name="your-name" type="text" placeholder="Số ĐT (*)">
+                    <input name="phone" type="text" placeholder="Số ĐT (*)">
                 </div>
                 <div class="form-block">
-                    <input name="your-email" type="email" placeholder="Tên đồng hồ">
+                    <input name="watchName" type="text" placeholder="Tên đồng hồ">
+                </div>           
+                <div class="form-block">
+                    <input name="glassType" type="text" placeholder="Mặt kính">
+                </div>  
+                <div class="form-block">
+                    <input name="caseMeterial" type="text" placeholder="Chất liệu">
+                </div>   
+                <div class="form-block">
+                    <input name="mainColor" type="text" placeholder="Màu Sắc">
+                </div> 
+                <div class="form-block">
+                    @Html.DropDownList("model", listmodels, new { @class = "form-control" })
                 </div>
                 <div class="form-block">
-                    <input name="your-subject" type="text" placeholder="Loại">
+                    @Html.DropDownList("store", liststores, new { @class = "form-control" })
                 </div>
                 <div class="form-block">
                     <input name="your-subject" type="file" placeholder="Hình ảnh">
-                </div>
-                <div class="form-block">
-                    <textarea name="your-message" placeholder="Mô tả chung"></textarea>
                 </div>
                 <div class="form-block">
                     <button type="submit" class="beta-btn primary">Gửi yêu cầu <i class="fa fa-chevron-right"></i></button>
