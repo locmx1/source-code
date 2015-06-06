@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/dest/css/custom.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="input-group" id="adv-search">
+            <input type="text" class="form-control" placeholder="Gõ từ khóa tìm kiếm" />
+            <div class="input-group-btn">
+                <div class="btn-group" role="group">
+                    <div class="dropdown dropdown-lg">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="filter">Loại đồng hồ</label>
+                                    <select class="form-control">
+                                        <option value="0" selected>Tất cà</option>
+                                        <option value="1">Đeo tay</option>
+                                        <option value="2">Treo tường</option>
+                                        <option value="3">Quả lắc</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contain">Thương hiệu</label>
+                                    <input class="form-control" type="text" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="contain">Mô tả khác</label>
+                                    <input class="form-control" type="text" />
+                                </div>
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="row-centered">
+            <div class="beta-tags search">
+                <a href="blog_fullwidth_2col.html">Đồng hồ</a>
+                <a href="blog_fullwidth_2col.html">Đồng hồ thông minh</a>
+                <a href="blog_fullwidth_2col.html">Đồng hồ thể thao</a>
+                <a href="blog_fullwidth_2col.html">Casio</a>
+                <a href="blog_fullwidth_2col.html">G-Shot</a>
+                <a href="blog_fullwidth_2col.html">Chống nước</a>
+                <a href="blog_fullwidth_2col.html">Đồng hồ nam</a>
+                <a href="blog_fullwidth_2col.html">Đồng hồ giá rẻ</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <hr/>
+        <span style="font-size: 16px;">Có thể bạn muốn xem?</span>
+    </div>
+    <div class="space40">&nbsp;</div>
+    <div class="clear"></div>
+    <div class="col-sm-12">
+        <div class="well">
+            <!-- Carousel
+            ================================================== -->
+            <div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb11"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb12"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb13"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb14"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb21"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb22"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb23"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb24"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb31"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb32"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb33"></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail"><img class="img-responsive" src="http://placehold.it/250x160" alt="Thumb34"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left fa-2x"></i></a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right fa-2x"></i></a>
+
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+            </div><!-- End Carousel -->
+        </div><!-- End Well -->
+    </div>
+</div>
+<script>
+    $('#myCarousel').carousel({
+        interval: 4000
+    });
+</script>

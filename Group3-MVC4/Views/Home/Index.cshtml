@@ -2,22 +2,22 @@
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/dest/css/under-construction.min.css" rel="stylesheet" />
 <div class="uc-body2">
-    <h1>Chọn thao tác muốn sử dụng</h1>
+    <h1>Bạn cần gì?</h1>
     <div class="space40">&nbsp;</div>
     <div class="col-sm-8 beta-coming">
         <div class="is-countdown" id="uc-countdown2">
             <span class="countdown-row countdown-show3">
                 <span class="countdown-section">
-                    <a href="#" class="beta-btn beta-btn-2d beta-btn-prussian beta-btn-medium">MUA</a>
+                    <a href="@Url.Action("ViewWatches", "Home")" class="beta-btn beta-btn-2d beta-btn-prussian beta-btn-medium">MUA</a>
                     <span class="countdown-period">ĐỒNG HỒ</span>
                 </span><span class="countdown-section">
-                           <a href="#" class="beta-btn beta-btn-2d beta-btn-prussian beta-btn-medium">BÁN</a>
+                           <a href="@Url.Action("CreateSellingRequest", "Home")" class="beta-btn beta-btn-2d beta-btn-prussian beta-btn-medium">BÁN</a>
                     <span class="countdown-period">ĐỒNG HỒ</span>
                 </span>
                 <span class="countdown-section">
-                    <a href="#" class="beta-btn beta-btn-2d beta-btn-prussian beta-btn-medium">TRAO ĐỔI</a>
+                    <a href="@Url.Action("CreateExchangeRequest", "Home")" class="beta-btn beta-btn-2d beta-btn-prussian beta-btn-medium">TRAO ĐỔI</a>
                     <span class="countdown-period">ĐỒNG HỒ</span>
                 </span>
             </span>
