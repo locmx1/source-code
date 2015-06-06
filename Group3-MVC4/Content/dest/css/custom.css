@@ -1,0 +1,153 @@
+﻿.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+
+    .btn-group .btn:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+.btn-group .form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+
+        .dropdown.dropdown-lg .dropdown-menu {
+            min-width: 500px;
+        }
+}
+
+.search {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*Center row*/
+/* centered columns styles */
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+}
+
+/*#####################
+Additional Styles (required)
+######################*/
+
+#myCarousel .thumbnail {
+    margin-bottom: 0;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none !important;
+}
+
+.carousel-control {
+    color: #fff;
+    top: 40%;
+    color: #428BCA;
+    bottom: auto;
+    padding-top: 4px;
+    width: 30px;
+    height: 30px;
+    text-shadow: none;
+    opacity: 1;
+}
+
+    .carousel-control:hover {
+        color: #d9534f;
+    }
+
+    .carousel-control.left, .carousel-control.right {
+        background-image: none !important;
+    }
+
+    .carousel-control.right {
+        left: auto;
+        right: -32px;
+    }
+
+    .carousel-control.left {
+        right: auto;
+        left: -32px;
+    }
+
+.carousel-indicators {
+    bottom: -30px;
+}
+
+    .carousel-indicators li {
+        border-radius: 0;
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        border: 1px solid #ccc;
+    }
+
+    .carousel-indicators .active {
+        width: 12px;
+        height: 12px;
+        background: #3276b1;
+        border-color: #3276b1;
+    }
+
+#myCarousel a > i {
+    color: #3A5C83;
+}
+
+h2, .h2 {
+    font-family: "Arial",sans-serif;
+}
+
+.shopping-cart {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: 50px;
+    height: 200px;    
+    border-bottom-left-radius: 3px #000000;
+    border-top-left-radius: 3px #000000;
+}
+
+.shopping-cart ul {
+    padding: 5px 5px 5px 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
