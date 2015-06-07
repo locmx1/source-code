@@ -2,49 +2,47 @@
     ViewBag.Title = "Xem chi tiết";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Script/vendors/bxslider/jquery.bxslider.css" rel="stylesheet" />
 <div id="content" class="space-top-none">
     <div class="abs-fullwidth bg-gray">
         <div class="space60">&nbsp;</div>
         <div class="container">
-            <h2 class="text-center">Thông tin chi tiết</h2>
+            <h2 class="text-center" style="font-family: 'Arial'">Thông tin chi tiết</h2>
             <div class="space20">&nbsp;</div>
             <div class="beta-roundabout-container">
-                <ul class="beta-roundabout roundabout-holder" style="padding: 0px; position: relative;">
-                    <li class="roundabout-moveable-item roundabout-in-focus" style="position: absolute; left: 137px; top: -200px; width: 855px; height: 400px; opacity: 1; z-index: 280; font-size: 13px;"><img src="/Images/roundabout/1.jpg" alt=""></li>
-                    <li class="roundabout-moveable-item" style="position: absolute; left: 773px; top: -110px; width: 470.25px; height: 220px; opacity: 0.55; z-index: 145; font-size: 7.2px;"><img src="/Images/roundabout/1.jpg" alt=""></li>
-                    <li class="roundabout-moveable-item" style="position: absolute; left: -115px; top: -110px; width: 470.25px; height: 220px; opacity: 0.55; z-index: 145; font-size: 7.2px;"><img src="/Images/roundabout/1.jpg" alt=""></li>
-                </ul>
             </div>
             <div class="text-center">
                 <a href="#" class="beta-btn primary">Mua ngay <i class="fa fa-chevron-right"></i></a>
+                <a href="#" class="beta-btn primary">Trao đổi <i class="fa fa-chevron-right"></i></a>
             </div>
         </div>
         <div class="space60">&nbsp;</div>
     </div><div class="abs-fullwidth-height" style="height: 664px;"></div><div class="abs-fullwidth-height" style="height:664px"></div><div class="abs-fullwidth-height" style="height:674px"></div>
     <div class="space20">&nbsp;</div>
     <div class="aside-menu">
-        <li><span class="col-sm-3">Nhãn hàng:</span> <span>Aiers</span></li>
+        <ul style="list-style: none; font-family: 'Arial'; font-size: 14px;">
+            <li><span class="col-sm-3">Nhãn hàng:</span> <span>Aiers</span></li>
 
-        <li><span class="col-sm-3">Loại đồng hồ:</span> <span>Automatic</span></li>
+            <li><span class="col-sm-3">Loại đồng hồ:</span> <span>Automatic</span></li>
 
-        <li><span class="col-sm-3">Giới tính:</span> <span>Nam</span></li>
+            <li><span class="col-sm-3">Giới tính:</span> <span>Nam</span></li>
 
-        <li><span class="col-sm-3">Chất liệu quai:</span> <span>Hợp kim; Da<span></span></span></li>
+            <li><span class="col-sm-3">Chất liệu quai:</span> <span>Hợp kim; Da<span></span></span></li>
 
-        <li><span class="col-sm-3">Chất liệu vỏ:</span> <span>Thép không gỉ</span></li>
+            <li><span class="col-sm-3">Chất liệu vỏ:</span> <span>Thép không gỉ</span></li>
 
-        <li><span class="col-sm-3">Chống nước:</span> <span>5ATM</span></li>
+            <li><span class="col-sm-3">Chống nước:</span> <span>5ATM</span></li>
 
-        <li><span class="col-sm-3">Hình dáng mặt:</span> <span>Tròn</span></li>
+            <li><span class="col-sm-3">Hình dáng mặt:</span> <span>Tròn</span></li>
 
-        <li><span class="col-sm-3">Kiểu khóa:</span> <span>Khóa bướm</span></li>
+            <li><span class="col-sm-3">Kiểu khóa:</span> <span>Khóa bướm</span></li>
 
-        <li><span class="col-sm-3">Kích thước mặt:</span> <span>Rộng 40mm; Dầy: 14mm</span></li>
+            <li><span class="col-sm-3">Kích thước mặt:</span> <span>Rộng 40mm; Dầy: 14mm</span></li>
 
-        <li><span class="col-sm-3">Bảo hành:</span> <span>2 năm</span></li>
+            <li><span class="col-sm-3">Bảo hành:</span> <span>2 năm</span></li>
 
-        <li><span class="col-sm-3">Độ sai lệch (tương đối):</span> <span>30-45s/ngày</span></li>
+            <li><span class="col-sm-3">Độ sai lệch (tương đối):</span> <span>30-45s/ngày</span></li>
+        </ul>
     </div>
     <div class="space30">&nbsp;</div>
     <div class="beta-products-list">
@@ -117,14 +115,12 @@
                 $(this).parents('li').addClass('parent-active');
             }
         });
+        $('.carousel').carousel();
     });
-
-
 </script>
 <script>
     jQuery(document).ready(function ($) {
         'use strict';
-
         // color box
 
         //color

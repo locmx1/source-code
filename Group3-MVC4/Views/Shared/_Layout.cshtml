@@ -7,7 +7,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link href="~/Content/dest/css/boostrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/dest/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Content/dest/rs-plugin/css/settings.css">
     <link rel="stylesheet" href="~/Content/dest/rs-plugin/css/responsive.css">
@@ -24,15 +24,11 @@
                 <nav class="main-menu">
                     <ul class="l-inline ov">
                         <li>
-                            <a href="~/Home/Index">Trang chủ</a>
+                            <a href="@Url.Action("Index", "Home")">Trang chủ</a>
                         </li>
                         <li>
                             <a href="#">Sản phẩm</a>
                             <ul class="sub-menu">
-                                <li><a href="">Casio</a></li>
-                                <li><a href="">Citizen</a></li>
-                                <li><a href="">Titan</a></li>
-                                <li><a href="">Candino</a></li>
                                 <li><a href="">Đồng hồ thông minh</a></li>
                                 <li><a href="">Đồng hồ thể thao</a></li>
                                 <li><a href="">Đồng hồ treo tường</a></li>
@@ -41,21 +37,9 @@
                         </li>
                         <li>
                             <a href="@Url.Action("Search", "Home")">Tìm kiếm</a>
-                            @* <ul class="sub-menu">
-                                <li><a href="portfolio_type_a.html">Portfolio type A</a></li>
-                                <li>
-                                    <a href="#">Portfolio type B</a>
-                                    <ul class="sub-menu">
-
-                                        <li><a href="portfolio_3col.html">Portfolio B - 3 Columns</a></li>
-                                        <li><a href="portfolio_4col.html">Portfolio B - 4 Columns</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="portfolio_single.html">Portfolio Item</a></li>
-                            </ul>*@
                         </li>
                         <li>
-                            <a href="#">Bán</a>
+                            <a href="@Url.Action("CreateSellingRequest", "Home")">Bán</a>
                         </li>
                         <li>
                             <a href="#">Trao đổi</a>
@@ -63,9 +47,19 @@
                         <li>
                             <a href=@Url.Action("BuyWatch","Home")>Đặt Mua</a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("MyTransaction", "Account")">Xem giao dịch</a>
-                        </li>
+                        @if (Session["Account"] != null)
+                        {
+                            <li>
+                                <a href="@Url.Action("MyTransaction", "Account")">Xem giao dịch</a>
+                            </li>
+                        }
+
+                        @if (Session["Account"] == null)
+                        {
+                            <li class="pull-right">
+                                <a href="@Url.Action("Login", "Account")">Đăng nhập</a>
+                            </li>
+                        }
                     </ul>
                     <div class="clearfix"></div>
                 </nav>
@@ -85,21 +79,20 @@
     </div> <!-- #footer -->
     <div class="copyright">
         <div class="container">
-            <p class="pull-left">WatchShop. (&copy;) 2015</p>           
+            <p class="pull-left">WatchShop &copy; 2015</p>
             <div class="clearfix"></div>
         </div> <!-- .container -->
     </div> <!-- .copyright -->
     <!-- include js files -->
     <script src="~/Script/js/jquery.js"></script>
     <script src="~/Script/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="~/Script/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="~/Script/js/bootstrap.js"></script>
     <script src="~/Script/vendors/colorbox/jquery.colorbox-min.js"></script>
     <script src="~/Script/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script src="~/Script/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script src="~/Script/js/waypoints.min.js"></script>
     <script src="~/Script/js/wow.min.js"></script>
-    <script src="~/Script/vendors/animo/Animo.js"></script>    
+    <script src="~/Script/vendors/animo/Animo.js"></script>
     <script src="~/Script/js/scripts.min.js"></script>
 
 
@@ -170,55 +163,55 @@
 
     </script>
 
-<script>
-    jQuery(document).ready(function($) {
-        'use strict';
-        try {
-            if ($(".animated")[0]) {
-                $('.animated').css('opacity', '0');
-            }
-            $('.triggerAnimation').waypoint(function() {
+    <script>
+        jQuery(document).ready(function ($) {
+            'use strict';
+            try {
+                if ($(".animated")[0]) {
+                    $('.animated').css('opacity', '0');
+                }
+                $('.triggerAnimation').waypoint(function () {
                     var animation = $(this).attr('data-animate');
                     $(this).css('opacity', '');
                     $(this).addClass("animated " + animation);
 
                 },
+                    {
+                        offset: '80%',
+                        triggerOnce: true
+                    }
+                );
+            } catch (err) {
+
+            }
+
+            var wow = new WOW(
                 {
-                    offset: '80%',
-                    triggerOnce: true
+                    boxClass: 'wow', // animated element css class (default is wow)
+                    animateClass: 'animated', // animation css class (default is animated)
+                    offset: 150, // distance to the element when triggering the animation (default is 0)
+                    mobile: false // trigger animations on mobile devices (true is default)
                 }
             );
-        } catch (err) {
+            wow.init();
 
-        }
+            $(function () {
+                // this will get the full URL at the address bar
+                var url = window.location.href;
 
-        var wow = new WOW(
-            {
-                boxClass: 'wow', // animated element css class (default is wow)
-                animateClass: 'animated', // animation css class (default is animated)
-                offset: 150, // distance to the element when triggering the animation (default is 0)
-                mobile: false // trigger animations on mobile devices (true is default)
-            }
-        );
-        wow.init();
-
-        $(function() {
-            // this will get the full URL at the address bar
-            var url = window.location.href;
-
-            // passes on every "a" tag
-            $(".main-menu a").each(function() {
-                // checks if its the same on the address bar
-                if (url == (this.href)) {
-                    $(this).closest("li").addClass("active");
-                    $(this).parents('li').addClass('parent-active');
-                }
+                // passes on every "a" tag
+                $(".main-menu a").each(function () {
+                    // checks if its the same on the address bar
+                    if (url == (this.href)) {
+                        $(this).closest("li").addClass("active");
+                        $(this).parents('li').addClass('parent-active');
+                    }
+                });
             });
+
         });
 
-    });
-
-</script>
+    </script>
 
 </body>
 </html>

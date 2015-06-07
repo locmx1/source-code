@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/font-awesome.css" />
 
     <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="~/Content/Admin/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css"/>
+    <link href="~/Script/vendors/bxslider/jquery.bxslider.css" rel="stylesheet" />
     <!-- Theme CSS -->
     <link rel="stylesheet" href="~/Content/Admin/stylesheets/theme.css" />
 
@@ -291,13 +292,13 @@
                                     </a>
                                     <ul class="nav nav-children">
                                         <li>
-                                            <a href="~/Admin/CreateNewStore">
-                                                Tạo Mới chi Nhánh
+                                            <a href="~/Admin/ViewStores">
+                                                Xem danh sách cửa hàng
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="~/Admin/ModifyStore">
-                                                Cập Nhật Chi Nhánh
+                                            <a href="~/Admin/CreateNewStore">
+                                                Mờ cửa hàng mới
                                             </a>
                                         </li>
 
@@ -367,73 +368,6 @@
             <!-- end: sidebar -->
             @RenderBody()
         </div>
-        <aside id="sidebar-right" class="sidebar-right">
-            <div class="nano">
-                <div class="nano-content">
-                    <a href="#" class="mobile-close visible-xs">
-                        Collapse <i class="fa fa-chevron-right"></i>
-                    </a>
-
-                    <div class="sidebar-right-wrapper">
-
-                        <div class="sidebar-widget widget-calendar">
-                            <h6>Upcoming Tasks</h6>
-                            <div data-plugin-datepicker data-plugin-skin="dark"></div>
-
-                            <ul>
-                                <li>
-                                    <time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-                                    <span>Company Meeting</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="sidebar-widget widget-friends">
-                            <h6>Friends</h6>
-                            <ul>
-                                <li class="status-online">
-                                    <figure class="profile-picture">
-                                        <img src="~/Content/Admin/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-                                    </figure>
-                                    <div class="profile-info">
-                                        <span class="name">Nguyễn Văn A</span>
-                                        <span class="title">Hey, how are you?</span>
-                                    </div>
-                                </li>
-                                <li class="status-online">
-                                    <figure class="profile-picture">
-                                        <img src="~/Content/Admin/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-                                    </figure>
-                                    <div class="profile-info">
-                                        <span class="name">Nguyễn Văn A</span>
-                                        <span class="title">Hey, how are you?</span>
-                                    </div>
-                                </li>
-                                <li class="status-offline">
-                                    <figure class="profile-picture">
-                                        <img src="~/Content/Admin/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-                                    </figure>
-                                    <div class="profile-info">
-                                        <span class="name">Nguyễn Văn A</span>
-                                        <span class="title">Hey, how are you?</span>
-                                    </div>
-                                </li>
-                                <li class="status-offline">
-                                    <figure class="profile-picture">
-                                        <img src="~/Content/Admin/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-                                    </figure>
-                                    <div class="profile-info">
-                                        <span class="name">Nguyễn Văn A</span>
-                                        <span class="title">Hey, how are you?</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </aside>
     </section>
 
     <!-- Vendor -->

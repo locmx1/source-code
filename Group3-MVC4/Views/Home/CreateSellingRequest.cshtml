@@ -21,29 +21,30 @@
             Selected = true
         }
     };
-    foreach (var model in models)
-    {
-        listmodels.Add(new SelectListItem
-        {
-            Text = model.Name,
-            Value = model.Id.ToString()
-        });
-    }
-    foreach (var store in stores)
-    {
-        liststores.Add(new SelectListItem
-        {
-            Text = store.Name,
-            Value = store.Id.ToString()
-        });
-    }
+    
+    //foreach (var model in models)
+    //{
+    //    listmodels.Add(new SelectListItem
+    //    {
+    //        Text = model.Name,
+    //        Value = model.Id.ToString()
+    //    });
+    //}
+    //foreach (var store in stores)
+    //{
+    //    liststores.Add(new SelectListItem
+    //    {
+    //        Text = store.Name,
+    //        Value = store.Id.ToString()
+    //    });
+    //}
 }
 
 <div id="content" class="space-top-none" style="border: 2px solid rgba(0,0,0,0.1); padding: 10px; border-radius: 5px; ">
     <div class="space50">&nbsp;</div>
     <div class="row">
-        <div class="col-sm-8">
-            <h2>Điền các thông tin cần thiết</h2>
+        <div class="col-sm-8" style="font-family: 'Arial';">
+            <h3 style="font-family: 'Arial';">Điền các thông tin cần thiết</h3>
             <div class="space20">&nbsp;</div>
             <p>Vui lòng cung cấp các thông tin cần thiết: </p>
             <div class="space20">&nbsp;</div>
@@ -53,21 +54,21 @@
                 </div>
                 <div class="form-block">
                     <input name="Name" type="text" placeholder="Tên đồng hồ">
-                </div>           
+                </div>
                 <div class="form-block">
                     <input name="GlassType" type="text" placeholder="Mặt kính">
-                </div>  
+                </div>
                 <div class="form-block">
                     <input name="CaseMeterial" type="text" placeholder="Chất liệu">
-                </div>   
+                </div>
                 <div class="form-block">
                     <input name="MainColor" type="text" placeholder="Màu Sắc">
-                </div> 
+                </div>
                 <div class="form-block">
                     <input name="InTransactionPrice" type="text" placeholder="Giá mong muốn">
                 </div>
                 <div class="form-block">
-                    @Html.DropDownList("ModelId", listmodels, new { @class = "form-control" })
+                    @Html.DropDownList("store", liststores, new { @class = "form-control" })
                 </div>
                 <div class="form-block">
                     @Html.DropDownList("AvailableAt", liststores, new { @class = "form-control" })
@@ -80,28 +81,27 @@
                 </div>
             </form>
         </div>
-        <div class="col-sm-4">
-            <h2>Điều khoản mua bán</h2>
+        <div class="col-sm-4" style="font-family: 'Arial';">
+            <h3 style="font-family: 'Arial';">Điều khoản mua bán</h3>
             <div class="space20">&nbsp;</div>
 
-            <h6 class="contact-title">Sản phẩm</h6>
+            <h6 class="contact-title" style="font-family: 'Arial';">Sản phẩm</h6>
             <p>
-                Sẽ được kiểm tra trước khi<br>
-                giao dịch
+                Sẽ được kiểm tra trước khi giao dịch
             </p>
             <div class="space20">&nbsp;</div>
-            <h6 class="contact-title">Giá cả</h6>
+            <h6 class="contact-title" style="font-family: 'Arial';">Giá cả</h6>
             <p>
                 Giá cả tốt nhất cho sản phẩm của bạn <br>
             </p>
             <div class="space20">&nbsp;</div>
-            <h6 class="contact-title">Kí gửi</h6>
+            <h6 class="contact-title" style="font-family: 'Arial';">Kí gửi</h6>
             <p>
                 Bạn có thể kí gửi bán sản phẩm với <br>
                 chi phí thấp nhất. <br>
             </p>
             <div class="space20">&nbsp;</div>
-            <h6 class="contact-title">Giao dịch</h6>
+            <h6 class="contact-title" style="font-family: 'Arial';">Giao dịch</h6>
             <p>
                 Bạn phải đến chi nhánh trực tiếp <br>
                 để kiểm tra sản phẩm trước khi <br>

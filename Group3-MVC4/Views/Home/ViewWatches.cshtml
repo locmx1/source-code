@@ -218,58 +218,13 @@
             <h3 class="widget-title">Thương hiệu</h3>
             <div class="widget-body">
                 <ul class="list-unstyled">
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-abs" value="abs">
-                        <label for="brands-abs"><span></span> Hiệu 1</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-ag" value="ag">
-                        <label for="brands-ag"><span></span> Hiệu 2</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-aliceolivia" value="aliceolivia">
-                        <label for="brands-aliceolivia"><span></span> Hiệu 3</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-autumn" value="autumn">
-                        <label for="brands-autumn"><span></span> Hiệu 4</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-bcbgmaxazria" value="bcbgmaxazria">
-                        <label for="brands-bcbgmaxazria"><span></span> Hiệu 5</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-dkny" value="dkny">
-                        <label for="brands-dkny"><span></span> Hiệu 6</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-elie" value="elie">
-                        <label for="brands-elie"><span></span> Hiệu 7</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-megaschoni" value="megaschoni">
-                        <label for="brands-megaschoni"><span></span> Hiệu 8</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-newyork" value="newyork">
-                        <label for="brands-newyork"><span></span> Hiệu 9</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-miller" value="miller">
-                        <label for="brands-miller"><span></span> Hiệu 10</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-redvalentino" value="redvalentino">
-                        <label for="brands-redvalentino"><span></span> Hiệu 11</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-suewong" value="suewong">
-                        <label for="brands-suewong"><span></span> Hiệu 12</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="brands" id="brands-wyatt" value="wyatt">
-                        <label for="brands-wyatt"><span></span> Hiệu 13</label>
-                    </li>
+                    @foreach (var item in ViewBag.Brands)
+                    {
+                        <li>
+                            <input type="checkbox" name="brands" id="brands-abs" value="@item.Id">
+                            <label for="brands-abs"><span></span> @item.Name</label>
+                        </li>
+                    }
                 </ul>
             </div>
         </div> <!-- brands widget -->
@@ -279,40 +234,11 @@
             <div class="widget-body">
                 <ul class="list-unstyled">
                     <li>
-                        <input type="checkbox" name="colors" id="colors-beige" value="beige">
-                        <label for="colors-beige"><span></span> Xanh <span>(35)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-blue" value="blue">
-                        <label for="colors-blue"><span></span> Đỏ <span>(256)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-cream" value="cream">
-                        <label for="colors-cream"><span></span> Đen <span>(15)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-green" value="green">
-                        <label for="colors-green"><span></span> Xám <span>(85)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-multi" value="multi">
-                        <label for="colors-multi"><span></span> Da bò <span>(99)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-orange" value="orange">
-                        <label for="colors-orange"><span></span> Đất nung <span>(358)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-purple" value="purple">
-                        <label for="colors-purple"><span></span> Gỗ dầu <span>(74)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-silver" value="silver">
-                        <label for="colors-silver"><span></span> Trắng <span>(33)</span></label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="colors" id="colors-white" value="white">
-                        <label for="colors-white"><span></span> Bạch kim <span>(789)</span></label>
+                        @foreach (var item in ViewBag.Colors)
+                        {
+                            <input type="checkbox" name="colors" id="colors-beige" value="Id-here">
+                            <label for="colors-beige"><span></span> @item</label>
+                        }
                     </li>
                 </ul>
             </div>
@@ -334,14 +260,10 @@
             <h3 class="widget-title">Tags</h3>
             <div class="widget-body">
                 <div class="beta-tags">
-                    <a href="blog_fullwidth_2col.html">Đồng hồ</a>
-                    <a href="blog_fullwidth_2col.html">Đồng hồ thông minh</a>
-                    <a href="blog_fullwidth_2col.html">Đồng hồ thể thao</a>
-                    <a href="blog_fullwidth_2col.html">Casio</a>
-                    <a href="blog_fullwidth_2col.html">G-Shot</a>
-                    <a href="blog_fullwidth_2col.html">Chống nước</a>
-                    <a href="blog_fullwidth_2col.html">Đồng hồ nam</a>
-                    <a href="blog_fullwidth_2col.html">Đồng hồ giá rẻ</a>
+                    @foreach (var item in ViewBag.Tags)
+                    {
+                        <a href="@Url.Action("Tag", "Home", new { id = item.Id})">@item.Name</a>
+                    }
                 </div>
             </div>
         </div> <!-- tags cloud widget -->

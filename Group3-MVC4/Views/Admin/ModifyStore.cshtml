@@ -1,56 +1,47 @@
 ﻿@{
-    ViewBag.Title = "ModifyStore";
+    ViewBag.Title = "Cập nhật thông tin cửa hàng";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Cập Nhật Chi Nhánh</h2>
-<div class="panel-body">
-    <div class="table-responsive">
-        <table class="table mb-none">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Tên Cửa Hàng</th>
-                    <th>Nhân Viên Quản Lý</th>
-                    <th>Địa Chỉ</th>
-                    <th>Số Điện Thoại</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Cửa Hàng AAA</td>
-                    <td>Vũ Đình Minh</td>
-                    <td>12 Tô Ký, Q12, tp HCM</td>
-                    <td>08-123456789</td>
-                    <td class="actions-hover actions-fade">
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Cửa Hàng BBB</td>
-                    <td>Vũ Văn A</td>
-                    <td>123 Quang Trung, Q12, tp HCM</td>
-                    <td>08-987654321</td>
-                    <td class="actions-hover actions-fade">
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Cửa Hàng CCC</td>
-                    <td>Vũ Phong</td>
-                    <td>234 Đồng Khởi, Biên Hòa, ĐN</td>
-                    <td>061-31234567</td>
-                    <td class="actions-hover actions-fade">
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Quản lí cửa hàng</h2>
+    </header>
+
+    <!-- start: page -->
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Cập nhật thông tin</h2>
+                </header>
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered" method="POST">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">Tên chi nhánh</label>
+                            <div class="col-md-6">
+                                <input class="form-control" id="inputDefault" type="text" value="Chi nhánh 28">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="address">Địa chỉ</label>
+                            <div class="col-md-6">
+                                <input name="address" class="form-control" placeholder="Địa chỉ cửa hàng" id="address" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="phone">Số ĐT liên hệ</label>
+                            <div class="col-md-6">
+                                <input name="phone" class="form-control" placeholder="Số điện thoại cửa hàng" id="phone" type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer" style="text-align: center;">
+                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary">Primary</button>
+                </div>
+            </section>
+        </div>
     </div>
-</div>
+    <!-- end: page -->
+</section>
