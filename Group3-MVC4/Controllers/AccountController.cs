@@ -30,7 +30,18 @@ namespace Group3_MVC4.Controllers
 
         public ActionResult MyTransaction()
         {
+            if (Session["Account"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuyWatch()
+        {
+            Session["Cart"] = ""; // add shopping cart to session here.
+            return RedirectToAction("ViewShoppingCart");
         }
 
     }

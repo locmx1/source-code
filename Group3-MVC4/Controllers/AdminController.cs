@@ -24,6 +24,11 @@ namespace Group3_MVC4.Controllers
         {
             return View();
         }
+
+        public ActionResult ViewStores()
+        {
+            return View();
+        }
         public ActionResult ModifyStore()
         {
             return View();

@@ -13,14 +13,36 @@ namespace Group3_MVC4.Controllers
         //
         // GET: /Home/
 
+        // Code by LocMX
         public ActionResult Index()
         {
-            return View();
+           return View();
         }
 
         public ActionResult ViewWatches()
         {
-            return View();
+            using (var ctx = new WatchShopEntities())
+            {
+                // Get brand
+                var brands = ctx.Brands.ToList();
+                // Get watches
+                var colors = new List<string>();
+                colors.Add("Đen nhạt");
+                colors.Add("Xám xanh");
+                colors.Add("Trắng");
+                colors.Add("Kem");
+                colors.Add("Da bò");
+                colors.Add("Nâu");
+                colors.Add("Xanh rêu");
+                colors.Add("Đen");
+                colors.Add("Bạch kim");
+                // Get tag
+                var tags = ctx.Tags.ToList();
+                ViewBag.Brands = brands;
+                ViewBag.Tags = tags;
+                ViewBag.Colors = colors;
+                return View();
+            }
         }
 
         public ActionResult ViewWatchDetail()
@@ -83,6 +105,8 @@ namespace Group3_MVC4.Controllers
             ViewBag.Message = message;
             return View();
         }
+
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult CreateSellingRequest()
         {
@@ -101,7 +125,6 @@ namespace Group3_MVC4.Controllers
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
-
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
@@ -121,6 +144,12 @@ namespace Group3_MVC4.Controllers
                 return RedirectToAction("index");
             }
             
+        }
+
+        // Advanced filter
+        public ActionResult Filter(FormCollection collection)
+        {
+            return View();
         }
     }
 }
