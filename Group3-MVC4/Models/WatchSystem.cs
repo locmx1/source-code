@@ -63,6 +63,13 @@ namespace Group3_MVC4.Models
             // close the response object
             response.Close();
         }
+
+        public static string GenerateCode()
+        {
+            Random generator = new Random();
+            String code = generator.Next(0, 1000000).ToString("D5");
+            return code;
+        }
     }
 
 }

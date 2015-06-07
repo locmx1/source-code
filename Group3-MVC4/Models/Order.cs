@@ -18,6 +18,7 @@ namespace Group3_MVC4.Models
         public string Phone { get; set; }
         public System.DateTime OrderDate { get; set; }
         public bool Status { get; set; }
+        public string ConfirmCode { get; set; }
     
         public virtual BuyOrder BuyOrder { get; set; }
         public virtual SellOrder SellOrder { get; set; }

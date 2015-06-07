@@ -25,6 +25,8 @@ namespace Group3_MVC4.Models
         public int RoleId { get; set; }
         public Nullable<int> WorkAt { get; set; }
         public string Password { get; set; }
+        public string ConfirmCode { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual ICollection<ExchangeRequest> ExchangeRequests { get; set; }
         public virtual Role Role { get; set; }

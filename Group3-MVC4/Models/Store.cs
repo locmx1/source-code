@@ -24,6 +24,7 @@ namespace Group3_MVC4.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+        public bool IsAvailable { get; set; }
     
         public virtual ICollection<Member> Members { get; set; }
         public virtual ICollection<Watch> Watches { get; set; }

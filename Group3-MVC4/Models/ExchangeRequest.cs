@@ -18,6 +18,8 @@ namespace Group3_MVC4.Models
         public string MemberId { get; set; }
         public Nullable<int> OwnedWatch { get; set; }
         public Nullable<int> WishWatch { get; set; }
+        public string ConfirmCode { get; set; }
+        public bool Status { get; set; }
     
         public virtual Member Member { get; set; }
         public virtual Watch Watch { get; set; }
