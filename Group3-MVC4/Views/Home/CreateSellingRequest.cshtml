@@ -68,10 +68,22 @@
                     <input name="InTransactionPrice" type="text" placeholder="Giá mong muốn">
                 </div>
                 <div class="form-block">
-                    @Html.DropDownList("store", liststores, new { @class = "form-control" })
+                    <select id="store" name="store" class="form-control">
+                        <option value="0">---- Chọn model ----</option>
+                        @foreach (var item in ViewBag.Models)
+                        {
+                            <option value="@item.Id"> @item.Name</option>
+                        }
+                    </select>
                 </div>
                 <div class="form-block">
-                    @Html.DropDownList("AvailableAt", liststores, new { @class = "form-control" })
+                    <select id="AvailableAt" name="AvailableAt" class="form-control">
+                        <option value="0">---- Chọn cửa hàng muốn giao dịch ----</option>
+                        @foreach (var item in ViewBag.Stores)
+                        {
+                            <option value="@item.Id"> @item.Name - @item.Address</option>
+                        }
+                    </select>
                 </div>
                 <div class="form-block">
                     <input name="file" type="file" placeholder="Hình ảnh">
@@ -110,3 +122,35 @@
         </div>
     </div>
 </div> <!-- #content -->
+<!--Confirm modal-->
+
+<div class="modal fade" id="cofirmModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="mySmallModalLabel">Small modal<a class="anchorjs-link" href="#mySmallModalLabel"><span class="anchorjs-icon"></span></a></h4>
+        </div>
+        <div class="modal-content">
+            <form id="confirmForm" class="form-horizontal" role="form">
+                <div style="margin-bottom: 25px" class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="code" type="text" class="form-control" name="code" value="" placeholder="Mã xác nhận">
+                </div>
+
+                <div style="margin-top: 10px" class="form-group">
+                    <!-- Button -->
+                    <div class="col-sm-12 controls">
+                        <a id="btn-login" href="#" class="btn btn-success" style="background-color: #3A5C83;">Đăng nhập </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/Script/js/jquery.js"></script>
+<script src="~/Script/js/bootstrap.js"></script>
+<script>
+    $(function () {
+        $('#cofirmModal').modal('show');
+    });
+</script>
