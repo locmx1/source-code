@@ -22,7 +22,11 @@ namespace Group3_MVC4.Controllers
         }
         public ActionResult ModifyStaff()
         {
-            return View();
+            using (var model = new WatchShopEntities())
+            {
+                IEnumerable<Member> members = (IEnumerable<Member>)from s in model.Members where s.RoleId==2 select s;
+                return View(members.ToList());
+            }
         }
 
         public ActionResult ViewStores()
@@ -86,6 +90,17 @@ namespace Group3_MVC4.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult ViewSellRequestDetail(Watch editWatch)
         {            
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = new TimeSpan(DateTime.Now.Date.Ticks).TotalMilliseconds.ToString() + "." + file.FileName.Substring(file.FileName.IndexOf(".") + 1);
+                    var path = Path.Combine(Server.MapPath("~/Images/Upload/"), fileName);
+                    editWatch.Images = "/Images/Upload/" + fileName;
+                    file.SaveAs(path);
+                }
+            }
             using (var model = new WatchShopEntities())
             {
                 Watch watch = model.Watches.Single(s => s.Id == editWatch.Id);
@@ -96,6 +111,7 @@ namespace Group3_MVC4.Controllers
                 watch.Description = editWatch.Description;
                 watch.ModelId = editWatch.ModelId;
                 watch.AvailableAt = editWatch.AvailableAt;
+                watch.Images = editWatch.Images;
                 model.SaveChanges();
                 return RedirectToAction("ManageSellRequest");
             }
