@@ -136,18 +136,96 @@ h2, .h2 {
     font-family: "Arial",sans-serif;
 }
 
-.shopping-cart {
-    position: fixed;
-    right: 0;
-    top: 100px;
-    width: 50px;
-    height: 200px;    
-    border-bottom-left-radius: 3px #000000;
-    border-top-left-radius: 3px #000000;
+/*Slider*/
+.main-text {
+    position: absolute;
+    top: 50px;
+    width: 96.66666666666666%;
+    color: #FFF;
 }
 
-.shopping-cart ul {
-    padding: 5px 5px 5px 5px;
-    background-color: rgba(0, 0, 0, 0.5);
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
 }
 
+.btn-clear {
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+    margin-right: 15px;
+}
+
+    .btn-clear:hover {
+        color: #000;
+        background-color: #FFF;
+    }
+
+/*Modal*/
+.modal .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+
+    .modal .modal-header .btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 0;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+.modal .modal-footer {
+    border-top: none;
+    padding: 0;
+}
+
+    .modal .modal-footer .btn-group > .btn:first-child {
+        border-bottom-left-radius: 0;
+    }
+
+    .modal .modal-footer .btn-group > .btn:last-child {
+        border-top-right-radius: 0;
+    }
+
+/*Search form*/
+
+
+#custom-search-input {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+}
+
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #000;
+    }
+
+.search-query:focus + button {
+    z-index: 3;
+}
