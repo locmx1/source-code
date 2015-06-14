@@ -1,43 +1,9 @@
-﻿@model Group3_MVC4.Models.Watch
+﻿@using Group3_MVC4.Models
+@model Watch
 @{
     ViewBag.Title = "Bán";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var models = ViewBag.models;
-    var stores = ViewBag.stores;
-    List<SelectListItem> listmodels = new List<SelectListItem>
-    {
-        new SelectListItem
-        { 
-            Text="---- Chọn model thích hợp ----",
-            Value="null",
-            Selected = true
-        }
-    };
-    List<SelectListItem> liststores = new List<SelectListItem>{
-        new SelectListItem
-        { 
-            Text="---- Chọn cửa hàng bạn muốn bán ----",
-            Value="null",
-            Selected = true
-        }
-    };
-    
-    //foreach (var model in models)
-    //{
-    //    listmodels.Add(new SelectListItem
-    //    {
-    //        Text = model.Name,
-    //        Value = model.Id.ToString()
-    //    });
-    //}
-    //foreach (var store in stores)
-    //{
-    //    liststores.Add(new SelectListItem
-    //    {
-    //        Text = store.Name,
-    //        Value = store.Id.ToString()
-    //    });
-    //}
+    Watch enteredWatch = (Watch)Session["SellingRequest"];
 }
 
 <div id="content" class="space-top-none" style="border: 2px solid rgba(0,0,0,0.1); padding: 10px; border-radius: 5px; ">
@@ -48,45 +14,100 @@
             <div class="space20">&nbsp;</div>
             <p>Vui lòng cung cấp các thông tin cần thiết: </p>
             <div class="space20">&nbsp;</div>
-            <form action="#" method="post" class="contact-form">
+            <form action="#" method="post" class="contact-form" enctype="multipart/form-data">
+                
                 <div class="form-block">
-                    <input name="MemberId" type="text" placeholder="Số ĐT (*)">
+                    @if (enteredWatch == null)
+                    {
+                        <input name="MemberId" type="text" placeholder="Số ĐT (*)">
+                    }
+                    else
+                    {
+                        <input name="MemberId" type="text" placeholder="Số ĐT (*)" value="@enteredWatch.MemberId">
+                    }
+                    
                 </div>
                 <div class="form-block">
-                    <input name="Name" type="text" placeholder="Tên đồng hồ">
+                    @if (enteredWatch == null)
+                    {
+                        <input name="Name" type="text" placeholder="Tên đồng hồ">
+                    }
+                    else
+                    {
+                        <input name="Name" type="text" placeholder="Tên đồng hồ" value="@enteredWatch.Name">
+                    }
                 </div>
                 <div class="form-block">
-                    <input name="GlassType" type="text" placeholder="Mặt kính">
+                    @if (enteredWatch == null)
+                    {
+                        <input name="GlassType" type="text" placeholder="Mặt kính">
+                    }
+                    else
+                    {
+                        <input name="GlassType" type="text" placeholder="Mặt kính" value="@enteredWatch.GlassType">
+                    }
+                    
                 </div>
                 <div class="form-block">
-                    <input name="CaseMeterial" type="text" placeholder="Chất liệu">
+                    @if (enteredWatch == null)
+                    {
+                        <input name="CaseMeterial" type="text" placeholder="Chất liệu">
+                    }
+                    else
+                    {
+                        <input name="CaseMeterial" type="text" placeholder="Chất liệu" value="@enteredWatch.CaseMeterial">
+                    }
+                    
                 </div>
                 <div class="form-block">
-                    <input name="MainColor" type="text" placeholder="Màu Sắc">
+                    @if (enteredWatch == null)
+                    {
+                        <input name="MainColor" type="text" placeholder="Màu Sắc">
+                    }
+                    else
+                    {
+                        <input name="MainColor" type="text" placeholder="Màu Sắc" value="@enteredWatch.MainColor">
+                    }
+                    
                 </div>
                 <div class="form-block">
-                    <input name="InTransactionPrice" type="text" placeholder="Giá mong muốn">
-                </div>
-                <div class="form-block">
-                    <select id="store" name="store" class="form-control">
-                        <option value="0">---- Chọn model ----</option>
-                        @foreach (var item in ViewBag.Models)
-                        {
-                            <option value="@item.Id"> @item.Name</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-block">
-                    <select id="AvailableAt" name="AvailableAt" class="form-control">
-                        <option value="0">---- Chọn cửa hàng muốn giao dịch ----</option>
-                        @foreach (var item in ViewBag.Stores)
-                        {
-                            <option value="@item.Id"> @item.Name - @item.Address</option>
-                        }
-                    </select>
+                    @if (enteredWatch == null)
+                    {
+                        <input name="InTransactionPrice" type="text" placeholder="Giá mong muốn">
+                    }
+                    else
+                    {
+                        <input name="InTransactionPrice" type="text" placeholder="Giá mong muốn" value="@enteredWatch.InTransactionPrice">
+                    }
+                    
                 </div>
                 <div class="form-block">
                     <input name="file" type="file" placeholder="Hình ảnh">
+                </div>  
+                               
+                    <select id="modelId" name="ModelId" class="combobox form-control">
+                        <option value="" selected="selected">Vui lòng chọn model</option>
+                        @*@foreach (var item in ViewBag.Models)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }*@
+                    </select>
+
+
+                    <select id="availableAt" name="AvailableAt" class="combobox form-control">
+                        <option value="" selected="selected">Vui lòng chọn cửa hàng</option>
+                        @*foreach (var item in ViewBag.Stores)
+                        {
+                            <option value="@item.Id"> @item.Name - @item.Address</option>
+                        }*@
+                    </select>
+           
+
+                <div class="form-block">
+                    <img alt="Captcha" src="@Url.Action("GetCapchar", "Home")" style="" />
+                </div>
+                <div class="form-block">
+                    <input name="Captcha" type="text" placeholder="Vui lòng nhập mã captcha phía trên">
                 </div>
                 <div class="form-block">
                     <button type="submit" class="beta-btn primary">Gửi yêu cầu <i class="fa fa-chevron-right"></i></button>
@@ -124,33 +145,48 @@
 </div> <!-- #content -->
 <!--Confirm modal-->
 
-<div class="modal fade" id="cofirmModal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <h4 class="modal-title" id="mySmallModalLabel">Small modal<a class="anchorjs-link" href="#mySmallModalLabel"><span class="anchorjs-icon"></span></a></h4>
-        </div>
-        <div class="modal-content">
-            <form id="confirmForm" class="form-horizontal" role="form">
-                <div style="margin-bottom: 25px" class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="code" type="text" class="form-control" name="code" value="" placeholder="Mã xác nhận">
-                </div>
 
-                <div style="margin-top: 10px" class="form-group">
-                    <!-- Button -->
-                    <div class="col-sm-12 controls">
-                        <a id="btn-login" href="#" class="btn btn-success" style="background-color: #3A5C83;">Đăng nhập </a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<script src="~/Script/js/jquery.js"></script>
-<script src="~/Script/js/bootstrap.js"></script>
+<script src="~/Script/js/jquery.js" type="text/javascript"></script>
+<script src="~/Script/js/bootstrap.js" type="text/javascript"></script>
+<script src="~/Script/js/bootstrap-combobox.js" type="text/javascript"></script>
 <script>
-    $(function () {
-        $('#cofirmModal').modal('show');
+    $(document).ready(function () {
+        $('.combobox').combobox();
+        
+        $('[placeholder = "Vui lòng chọn model"]').keypress(function () {
+            $.ajax({
+                url: '@Url.Action("GetListModel", "Home")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (stringData) {
+                    var data = JSON.parse(stringData);
+                    $('#modelId').html('');
+                    $('#modelId').append($('<option>').text("Vui lòng chọn model").attr('value', ""));
+                    $.each(data, function (index, element) {
+                        $('#modelId').append($('<option>').text(element.Name).attr('value', element.Id));
+                    });
+                    $('#modelId').data('combobox').refresh();
+                }
+            });
+        });
+        $('[placeholder = "Vui lòng chọn cửa hàng"]').keypress(function () {
+            $.ajax({
+                url: '@Url.Action("GetListStore", "Home")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (stringData) {
+                    var data = JSON.parse(stringData);
+                    $('#availableAt').html('');
+                    $('#availableAt').append($('<option>').text("Vui lòng chọn cửa hàng").attr('value', ""));
+                    $.each(data, function (index, element) {
+                        $('#availableAt').append($('<option>').text(element.Name).attr('value', element.Id));
+                    });
+                    $('#availableAt').data('combobox').refresh();
+                }
+            });
+        });
+
+
     });
+
 </script>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Group3_MVC4.Models.Watch>
+@foreach (var i in Model)
+{
+    <div class="beta-products-list">
+        <div class="header-bottom"></div><div class="space30">&nbsp;</div>
+        <div class="row">
+            <div class="col-sm-4 ">
+                <div class="single-item">
+                    <div class="single-item-header">
+                        <a href="@Url.Action("ViewWatchDetail", "Home", new {id =@i.Id})"><img src="@i.Images" alt="" height="160" width="160" class="img img-rounded"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 ">
+                <div class="single-item">
+                    <div class="single-item-header">
+                        <a href="@Url.Action("ViewWatchDetail","Home", new{id = @i.Id})"><h4>@i.Name</h4></a>
+                    </div>
+                    <div class="single-item-header">
+                        <p class="single-item-title">
+                            Mã sản phẩm: @i.Model.Name
+                        </p>
+                        <p class="single-item-title">
+                            Màu sắc:  @i.MainColor
+                        </p>
+                    </div>
+                    <div class="single-item-caption">
+
+                        <a class="beta-btn primary" href="@Url.Action("ViewWatchDetail","Home", new {id = @i.Id})">Chi tiết <i class="fa fa-chevron-right"></i></a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 ">
+                <div class="single-item">
+                    <div class="single-item-header">
+                        <p class="single-item-title">
+                            Giá bán đề nghị
+                        </p>
+                        <h4>@string.Format("{0:0,0,0 VND}", i.InTransactionPrice)</h4>
+                    </div>
+                    <div class="single-item-caption">
+
+                        <a class="beta-btn primary" href="@Url.Action("")">Mua ngay <i class="fa fa-chevron-right"></i></a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

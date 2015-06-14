@@ -5,56 +5,46 @@
 <link href="~/Content/dest/css/custom.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-12">
-        <div class="input-group" id="adv-search">
-            <input type="text" class="form-control" placeholder="Gõ từ khóa tìm kiếm" />
-            <div class="input-group-btn">
-                <div class="btn-group" role="group">
-                    <div class="dropdown dropdown-lg">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label for="filter">Loại đồng hồ</label>
-                                    <select class="form-control">
-                                        <option value="0" selected>Tất cà</option>
-                                        <option value="1">Đeo tay</option>
-                                        <option value="2">Treo tường</option>
-                                        <option value="3">Quả lắc</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contain">Thương hiệu</label>
-                                    <input class="form-control" type="text" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="contain">Mô tả khác</label>
-                                    <input class="form-control" type="text" />
-                                </div>
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                            </form>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <div class="row-centered" style="margin-bottom: 20px;">
+            <div id="custom-search-input">
+                <div class="input-group col-md-8 col-md-offset-2">
+                    <input type="text" class="search-query form-group" placeholder=" Nhập từ khóa tìm kiếm ..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </span>
                 </div>
             </div>
         </div>
-        <div class="row-centered">
-            <div class="beta-tags search">
-                <a href="blog_fullwidth_2col.html">Đồng hồ</a>
-                <a href="blog_fullwidth_2col.html">Đồng hồ thông minh</a>
-                <a href="blog_fullwidth_2col.html">Đồng hồ thể thao</a>
-                <a href="blog_fullwidth_2col.html">Casio</a>
-                <a href="blog_fullwidth_2col.html">G-Shot</a>
-                <a href="blog_fullwidth_2col.html">Chống nước</a>
-                <a href="blog_fullwidth_2col.html">Đồng hồ nam</a>
-                <a href="blog_fullwidth_2col.html">Đồng hồ giá rẻ</a>
+        @*============= search result*@
+        <div id="divSearchResult">
+            <div id="showResult">
+
             </div>
         </div>
+
+        @*=========end search result*@
+
+
+
+        @*<div class="row-centered">
+                <div class="beta-tags search">
+                    <a href="blog_fullwidth_2col.html">Đồng hồ</a>
+                    <a href="blog_fullwidth_2col.html">Đồng hồ thông minh</a>
+                    <a href="blog_fullwidth_2col.html">Đồng hồ thể thao</a>
+                    <a href="blog_fullwidth_2col.html">Casio</a>
+                    <a href="blog_fullwidth_2col.html">G-Shot</a>
+                    <a href="blog_fullwidth_2col.html">Chống nước</a>
+                    <a href="blog_fullwidth_2col.html">Đồng hồ nam</a>
+                    <a href="blog_fullwidth_2col.html">Đồng hồ giá rẻ</a>
+                </div>
+            </div>*@
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <hr/>
+        <hr />
         <span style="font-size: 16px;">Có thể bạn muốn xem?</span>
     </div>
     <div class="space40">&nbsp;</div>
@@ -127,7 +117,50 @@
     </div>
 </div>
 <script>
-    $('#myCarousel').carousel({
-        interval: 4000
-    });
+    //$('#myCarousel').carousel({
+    //    interval: 4000
+    //});
+
+    function Search() {
+        var search = document.getElementById('Search').value;
+        $.ajax({
+            url: "/Home/Search",
+            type: "POST",
+            data: { search: search },
+            success: function (res) {
+                if (res !="") {
+                    $("#showResult").html('<h3>Kết quả tìm kiếm</h3> <br/>' + res);
+                }
+                else {
+                    $("#showResult").html('<h3>Kết quả tìm kiếm</h3> <br/>' +
+                        '<div class="row-centered">' +
+                        '<label>Không tìm thấy kết quả !</label> <br/> ' +
+                        '<button type="button" class="btn btn-primary">Đặt Mua</button>' +
+                        '</div>'
+                        );
+
+                }
+                // alert(res);
+
+                //$("#divSearchResult").append('<h2>Search Result</h2>');
+                //if (res) {
+                //    document.getElementById("divSearchResult").style.display = "none";
+                //} else {
+                //    var data = res;
+                //    var htmlTag = $(".beta-products-list");
+                //    for (i = 0; i < data.length; i++) {
+                //        var ele = htmlTag.clone();
+                //        var watchName = ele.find(".watchName");
+                //        watchName.html(data[i].name);
+                //        $("#divSearchResult").append(ele);
+                //    }
+                //}
+            }
+            //,
+            //e1rror: function(res) {
+            //    alert(res.t);
+            //}
+
+        });
+    }
 </script>

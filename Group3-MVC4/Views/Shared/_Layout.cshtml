@@ -8,12 +8,14 @@
     <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link href="~/Content/dest/css/boostrap.css" rel="stylesheet" />
+    <link href="~/Content/dest/css/bootstrap-combobox.css" rel="stylesheet"/>
     <link rel="stylesheet" href="~/Content/dest/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Content/dest/rs-plugin/css/settings.css">
     <link rel="stylesheet" href="~/Content/dest/rs-plugin/css/responsive.css">
-    <link rel="stylesheet" href="~/Script/vendors/colorbox/example3/colorbox.css">
     <link rel="stylesheet" title="style" href="~/Content/dest/css/style.css">
     <link rel="stylesheet" href="~/Content/dest/css/animate.css">
+    <!-- include js files -->
+    <script src="~/Script/js/jquery.js"></script>
 </head>
 <body>
     <div id="header">
@@ -69,7 +71,9 @@
 
     <div class="container">
         <div id="content">
-            @RenderBody()
+            <div class="row">
+                @RenderBody()
+            </div>
         </div> <!-- #content -->
     </div> <!-- .container -->
 
@@ -83,10 +87,15 @@
             <div class="clearfix"></div>
         </div> <!-- .container -->
     </div> <!-- .copyright -->
-    <!-- include js files -->
-    <script src="~/Script/js/jquery.js"></script>
+
     <script src="~/Script/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="~/Script/js/bootstrap.js"></script>
-    <script src="~/Script/vendors/animo/Animo.js"></script>
+    <script src="~/Script/js/bootstrap-combobox.js" type="text/javascript"></script>
+    <script src="~/Script/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 </html>

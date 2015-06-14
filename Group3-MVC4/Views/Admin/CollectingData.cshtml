@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "CollectingData";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-body" role="main">
+    <header class="page-header">
+        <h2>
+            Collecting Data
+        </h2>
+    </header>
+    <div class="row">
+        <form>
+            <div>
+                <label>Link:</label>
+                <input id="Link" name="link" type="text" />
+                <input id="click" value="parse" type="button" onclick="CollectingData()" />
+            </div>
+            <div id="resultt"></div>
+        </form>
+    </div>
+</section>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    function CollectingData() {
+        var link = document.getElementById('Link').value;
+        $.ajax({
+            url: "/Admin/CollectingData",
+            type: "POST",
+            data: { link: link },
+            success: function (result) {
+                $("#resultt").html(result);
+            }
+        });
+        return false;
+    }
+</script>

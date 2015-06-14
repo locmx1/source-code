@@ -1,53 +1,53 @@
-﻿@{
+﻿@model IEnumerable<Group3_MVC4.Models.Member>
+@{
     ViewBag.Title = "ModifyStaff";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Cập Nhật Nhân Viên</h2>        
+    </header>
+    <!-- start: page -->
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
 
-<h2>Cập Nhật Nhân Viên</h2>
-<div class="panel-body">
-    <div class="table-responsive">
-        <table class="table mb-none">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Họ Tên</th>
-                    <th>Username</th>
-                    <th>Quyền Hạn</th>
-                    <th>Hành Động</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Vũ Đình Minh</td>
-                    <td>minh</td>
-                    <td>Quản Trị</td>
-                    <td class="actions-hover actions-fade">
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Vũ Văn A</td>
-                    <td>ABC</td>
-                    <td>Nhân Viên</td>
-                    <td class="actions-hover actions-fade">
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Vũ Phong</td>
-                    <td>phong</td>
-                    <td>Nhân Viên</td>
-                    <td class="actions-hover actions-fade">
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+            <h2 class="panel-title">Cập Nhật Nhân Viên</h2>
+        </header>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover mb-none">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Phone</th>
+                            <th>Làm việc tại</th>
+                            <th>Quyền Hạn</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Phone</td>
+                                <td>@item.WorkAt</td>
+                                <td>Chờ kiểm tra</td>
+                                <td class="actions-hover actions-fade">
+                                    <a href="@Url.Action("ViewSellRequestDetail", "Admin", new {id = @item.Id })"><i class="fa fa-pencil"></i></a>
+                                    <a href="@Url.Action("DeleteSellRequest", "Admin", new { id = @item.Id })" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- end: page -->
+</section>

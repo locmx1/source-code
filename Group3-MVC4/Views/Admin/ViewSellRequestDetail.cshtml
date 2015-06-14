@@ -63,7 +63,7 @@
 
                     <h2 class="panel-title">Cập nhật thông tin yêu cầu cho khách hàng</h2>
                 </header>
-                <form class="form-horizontal form-bordered" method="post" action="@Url.Action("ViewSellRequestDetail", "Admin")">
+                <form class="form-horizontal form-bordered" method="post" action="@Url.Action("ViewSellRequestDetail", "Admin")" enctype="multipart/form-data">
                     <div class="panel-body">
                         @Html.Hidden("Id", @Model.Id)
                         <div class="form-group">
@@ -108,9 +108,7 @@
                                             <span class="fileupload-preview"></span>
                                         </div>
                                         <span class="btn btn-default btn-file">
-                                            <span class="fileupload-exists">Change</span>
-                                            <span class="fileupload-new">Select file</span>
-                                            <input type="file">
+                                            <input name="file" type="file">
                                         </span>
                                         <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>

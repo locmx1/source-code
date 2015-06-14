@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "ConfirmNumber";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center">Mã Số Xác Nhận</h2>
+<form method="POST" action="/Home/ConfirmNumber">
+    <div class="form-block" align="center">
+        <input type="text" id="confirmNumber" name="confirmNumber" required><br />
+    </div>
+    <div class="form-block" align="center">
+        <button type="submit" class="beta-btn beta-btn-3d beta-btn-denim beta-btn-small"><i class="shift-left fa fa-signal"></i>Xác Nhận</button>
+    </div>
+</form>
