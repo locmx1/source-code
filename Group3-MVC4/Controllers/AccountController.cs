@@ -30,10 +30,10 @@ namespace Group3_MVC4.Controllers
 
         public ActionResult MyTransaction()
         {
-            if (Session["Account"] == null)
-            {
-                return RedirectToAction("LogIn", "Account");
-            }
+            //if (Session["Account"] == null)
+            //{
+            //    return RedirectToAction("LogIn", "Account");
+            //}
             return View();
         }
 
