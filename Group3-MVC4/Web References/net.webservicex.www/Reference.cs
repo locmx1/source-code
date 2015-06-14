@@ -35,7 +35,6 @@ namespace Group3_MVC4.net.webservicex.www {
         
         /// <remarks/>
         public CurrencyConvertor() {
-
             this.Url = global::Group3_MVC4.Properties.Settings.Default.Group3_MVC4_net_webservicex_www_CurrencyConvertor;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
